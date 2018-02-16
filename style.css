@@ -19,15 +19,15 @@ li {
     display: inline;
 }
 
-/* 	Information boxes for different chart layouts */
+/* Information boxes for different chart layouts */
 /* Positioning */
 #initial-content, #a, #b, #c, #d, #e, #f, #view-party-type, #view-donor-type, #view-source-type, #partyInfo, #conservative, #labour, #libdem, #individual, #company, #union, #society, #other, #public-or-private-money, #public-or-private-money-split, #private-money, #public-money { 
     position: absolute; 
 }
 
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type {
-    display: none;
+#view-party-type, #view-donor-type, #view-source-type, #view-donor-amount {
+    display: none;  /*text on page load*/
 }
 
 /* View containers */
@@ -40,8 +40,7 @@ li {
     width: 272px;
 }
 
-/*  Public or private funds view */
-
+/* Public or private funds view */
 #public-or-private-money {
     max-width: 300px;
 }
@@ -60,22 +59,25 @@ li {
     left: 610px;
 }
 
-/*  Party view */
+/* Party view */
 #conservative, #labour, #libdem { padding: 10px; }
 #conservative {
-    background: rgba(8, 127, 189, 0.2);
-    top: 110px;
+    /* background: rgba(8, 127, 189, 0.2); */
+    background: rgba(0, 255, 0, 0.7);
+    top: 100px;
 }
 #labour {
-    background: rgba(240, 34, 51, 0.2);
-    top: 330px;
+    /* background: rgba(240, 34, 51, 0.2); */
+    background: rgba(255, 0, 255, 0.7);
+    top: 320px;
 }
 #libdem {
-    background: rgba(253, 187, 48, 0.2);
-    top: 550px;
+    /* background: rgba(253, 187, 48, 0.2); */
+    background: rgba(0, 255, 255, 0.7);
+    top: 540px;
 }
 
-/*	Donor type layout */
+/* Donor type layout */
 #view-donor-type {
     height: 100%;
     left: 500px;
@@ -115,7 +117,6 @@ li {
 #d { top: 485px;}
 #e { top: 435px;}
 #f { top: 648px; left: 575px; }
-
 /* End of view */
 
 circle {
@@ -137,7 +138,7 @@ circle.active {
     padding: 5px;
     line-height: 1.4;
     display: none;
-    height: 125px;
+    height: 150px;
     width: 280px;
     text-align: left;
     border: 4px solid rgba(0, 0, 0, .8);
@@ -235,4 +236,17 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 .pure-button-active, .pure-button:active {
     color: rgb(0, 120, 231);
     color: #fff
+}.public-private {
+
+}
+
+/* zoom */
+.content {
+    font-size:10pt;
+    font-family:Arial,sans-serif;
+}
+
+#view-donor-amount {
+    text-align: center;
+    margin: 0px;
 }
