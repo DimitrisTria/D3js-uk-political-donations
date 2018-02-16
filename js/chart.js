@@ -49,6 +49,12 @@ var tooltip = d3.select("#chart")
                 .attr("id", "tooltip");
 
 var comma = d3.format(",.0f");
+
+var donorAmountPos = {
+    first: {x: 300, y: 270},
+    second: {x: 500, y: 270},
+    third: {x: 700, y: 270}
+};
 /* ----- end of Global variables ----- */
 
 /* ----- event handler ----- */
@@ -141,7 +147,7 @@ function mouseover(d) {
                     + "<p> Type of donor: <b>" + d.entityLabel + "</b></p>"
                     + "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
     
-    responsiveVoice.speak(d.donor +" with value " +comma(amount) +" pounds");
+    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     mosie.classed("active", true);
 
     /* info box apearance */
@@ -390,31 +396,26 @@ function entitiesByAmount(e) {
             .attr("cy", function(d) {return d.y; });
 }
 
-var donorAmountPos = {
-    first: {x: 200, y: 150},
-    second: {x: 500, y: 150},
-    third: {x: 200, y: 450},
-    fourth: {x: 500, y: 450}
-};
-
 function moveByAmount(alpha) {
     return function(d) {
-        if(d.value >= 0 && d.value <= 5000000) {
-            d.x = donorAmountPos.first.x;
-            d.y = donorAmountPos.first.y;
+        var centreY = entityCentres[d.entity].y;
+        var centreX = entityCentres[d.entity].x;
+        
+        if(d.value >= 0 && d.value <= 100000) {
+            centreX = donorAmountPos.first.x;
+            centreY = donorAmountPos.first.y;
         }
-        if(d.value > 5000000 && d.value <= 10000000) {
-            d.x = donorAmountPos.second.x;
-            d.y = donorAmountPos.second.y;
+        if(d.value > 100000 && d.value <= 1000000) {
+            centreX = donorAmountPos.second.x;
+            centreY = donorAmountPos.second.y;
         }
-        if(d.value > 10000000 && d.value <= 15000000) {
-            d.x = donorAmountPos.third.x;
-            d.y = donorAmountPos.third.y;
+        if(d.value > 1000000 && d.value <= 20000000) {
+            centreX = donorAmountPos.third.x;
+            centreY = donorAmountPos.third.y;
         }
-        if(d.value > 15000000 && d.value <= 20000000) {
-            d.x = donorAmountPos.fourth.x;
-            d.y = donorAmountPos.fourth.y;
-        }
+        
+        d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+        d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
     };
 }
 /* ----- end of mode: split by donor amount ----- */
