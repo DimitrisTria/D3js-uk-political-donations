@@ -141,7 +141,7 @@ function mouseover(d) {
                     + "<p> Type of donor: <b>" + d.entityLabel + "</b></p>"
                     + "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
     
-    //responsiveVoice.speak("The selected donor is the " +d.donor +" and the amount of donation is " +comma(amount) +" pounds");
+    responsiveVoice.speak("The selected donor is the " +d.donor +" and the amount of donation is " +comma(amount) +" pounds");
     mosie.classed("active", true);
 
     /* info box apearance */
