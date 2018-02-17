@@ -25,8 +25,7 @@ var entityCentres = {
     individual: {x: w / 3.65, y: h / 3.3}
 };
 
-//circles colors (blue-red-yellow)
-//var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+//circles colors (green-purple-cyan)
 var fill = d3.scale.ordinal().range(["#CC0066", "#00CC66", "#00FFCC"]);
 
 //all money (circles positions)
@@ -55,6 +54,8 @@ var donorAmountPos = {
     second: {x: 500, y: 270},
     third: {x: 700, y: 270}
 };
+
+var tempCounter = 0;
 /* ----- end of Global variables ----- */
 
 /* ----- event handler ----- */
@@ -111,9 +112,7 @@ function start() {
             .style("fill", function(d) { return fill(d.party); })
             .on("mouseover", mouseover)
             .on("mouseout", mouseout)
-            .on("click", function(d) {
-                window.open('http://google.com/search?q='+d.donor);
-            });
+            .on("dblclick", dbclick);
             // Alternative title based 'tooltips'
             // node.append("title")
             //.text(function(d) { return d.donor; });
@@ -153,6 +152,38 @@ function mouseover(d) {
     /* info box apearance */
     d3.select(".tooltip").style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
       .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px").html(infoBox).style("display","block");
+}
+
+function dbclick(d) {
+    filterSearchD(d);
+    
+    var imageFile = "assets/photos/" + d.donor + ".ico";
+    tempCounter=tempCounter+1;
+    if(tempCounter === 4) {
+        tempCounter = 0;
+    }
+    else {
+        addPhotosToHTML(imageFile);
+    }
+}
+
+function filterSearchD(d) {
+    if(d.donor === "Community") {
+        googleSearch("Community (trade union)");
+    }
+    else {
+        googleSearch(d.donor);
+    }
+}
+
+function googleSearch(input) {
+    window.open('http://google.com/search?q='+input);
+}
+
+function addPhotosToHTML(imagePath) {
+    var tempImage = document.createElement("IMG");
+    tempImage.setAttribute("src", imagePath);
+    document.body.appendChild(tempImage);
 }
 
 // When mouse out of circle
@@ -225,7 +256,7 @@ function total() {
 }
 
 function all(e) {
-    node.each(moveToCentre(e.alpha)).each(collide(0.001));
+    node.each(moveToCentre(e.alpha)).each(collide(0.0001));
     node.attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) {return d.y; });
 }
