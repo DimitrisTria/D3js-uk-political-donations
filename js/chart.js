@@ -54,8 +54,6 @@ var donorAmountPos = {
     second: {x: 500, y: 270},
     third: {x: 700, y: 270}
 };
-
-var tempCounter = 0;
 /* ----- end of Global variables ----- */
 
 /* ----- event handler ----- */
@@ -66,8 +64,8 @@ $(document).ready(function() {
     });
     return d3.csv("assets/data/7500up.csv", display);
 });
-
 /* ----- end of: event handler ----- */
+
 function display(data) {
     maxVal = d3.max(data, function(d) { return d.amount; });
     var radiusScale = d3.scale.sqrt().domain([0, maxVal]).range([10, 20]);
@@ -95,7 +93,6 @@ function display(data) {
     return start();
 }
 
-/* ----- page on load ----- */
 function start() {
     node = nodeGroup.selectAll("circle")
             .data(nodes)
@@ -110,9 +107,10 @@ function start() {
             //.style("opacity", 0.9)
             .attr("r", 0)
             .style("fill", function(d) { return fill(d.party); })
+            .style("left", 30 + "vw")
             .on("mouseover", mouseover)
             .on("mouseout", mouseout)
-            .on("dblclick", dbclick);
+            .on("click", click);
             // Alternative title based 'tooltips'
             // node.append("title")
             //.text(function(d) { return d.donor; });
@@ -128,7 +126,6 @@ function start() {
             .duration(2500)
             .attr("r", function(d) { return d.radius; });
 }
-/* ----- end of page on load ----- */
 
 /* ----- Mouse Events on circles  ----- */
 function mouseover(d) {
@@ -137,56 +134,41 @@ function mouseover(d) {
     var amount = mosie.attr("amount");
     var offset = $("svg").offset();
     
-    /* image url that want to check */
-    var imageFile = "assets/photos/" + d.donor + ".ico";
+    var imagePath = "assets/photos/" + d.donor + ".ico";
     /* info box */
-    var infoBox = "<p> Source: <b>" + d.donor + "</b> " +  "<span><img src='" + imageFile 
+    var infoBox = "<p> Source: <b>" + d.donor + "</b> " +  "<span><img src='" + imagePath 
                     + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>"
                     + "<p> Recipient: <b>" + d.partyLabel + "</b></p>"
                     + "<p> Type of donor: <b>" + d.entityLabel + "</b></p>"
                     + "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
     
-    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     mosie.classed("active", true);
 
-    /* info box apearance */
+    /* info box apearance */   /* top: ... - 10 (boliko sto mati)*/
     d3.select(".tooltip").style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-      .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px").html(infoBox).style("display","block");
+      .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) - 13) + "px").html(infoBox).style("display","block");
+
+    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+    //addPhotosToHTML(imagePath);
+    d3.select("#view-recent-donors").html("<img src='" +imagePath +"'>").style("top", 940 +"px");
 }
 
-function dbclick(d) {
-    filterSearchD(d);
-    
-    var imageFile = "assets/photos/" + d.donor + ".ico";
-    tempCounter=tempCounter+1;
-    if(tempCounter === 4) {
-        tempCounter = 0;
-    }
-    else {
-        addPhotosToHTML(imageFile);
-    }
-}
-
-function filterSearchD(d) {
-    if(d.donor === "Community") {
-        googleSearch("Community (trade union)");
-    }
-    else {
-        googleSearch(d.donor);
-    }
+function click(d) {
+    googleSearch(d.donor); 
 }
 
 function googleSearch(input) {
-    window.open('http://google.com/search?q='+input);
+    window.open('http://google.com/search?q=' +input);
 }
 
 function addPhotosToHTML(imagePath) {
     var tempImage = document.createElement("IMG");
     tempImage.setAttribute("src", imagePath);
+    tempImage.width = 100;
+    tempImage.height = 100;
     document.body.appendChild(tempImage);
 }
 
-// When mouse out of circle
 function mouseout() {
     // no more tooltips
     var mosie = d3.select(this);
@@ -204,7 +186,7 @@ function transition(name) {
         $("#view-donor-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
         $("#view-party-type").fadeOut(250);
-        $("#view-donor-amount").fadeOut(250);
+        $("#view-by-amount").fadeOut(250);
         return total();
     }
     if (name === "group-by-party") {
@@ -213,7 +195,7 @@ function transition(name) {
         $("#view-donor-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
         $("#view-party-type").fadeIn(1000);
-        $("#view-donor-amount").fadeOut(250);
+        $("#view-by-amount").fadeOut(250);
         return partyGroup();
     }
     if (name === "group-by-donor-type") {
@@ -222,7 +204,7 @@ function transition(name) {
         $("#view-party-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
         $("#view-donor-type").fadeIn(1000);
-        $("#view-donor-amount").fadeOut(250);
+        $("#view-by-amount").fadeOut(250);
         return donorType();
     }
     if (name === "group-by-money-source") {
@@ -231,7 +213,7 @@ function transition(name) {
         $("#view-donor-type").fadeOut(250);
         $("#view-party-type").fadeOut(250);
         $("#view-source-type").fadeIn(1000);
-        $("#view-donor-amount").fadeOut(250);
+        $("#view-by-amount").fadeOut(250);
         return fundsType();
     }
     if(name === "group-by-donor-amount") {
@@ -240,7 +222,7 @@ function transition(name) {
         $("#view-donor-type").fadeOut(250);
         $("#view-party-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
-        $("#view-donor-amount").fadeIn(1000);
+        $("#view-by-amount").fadeIn(1000);
         return donorAmount();
     }
 }
@@ -451,13 +433,15 @@ function moveByAmount(alpha) {
 }
 /* ----- end of mode: split by donor amount ----- */
 
+/* "zoom" */
 $(document).ready(function() {
   var oldSize = parseFloat($(".content").css('font-size'));
-  var newSize = oldSize  * 1.3;
+  var newSize = oldSize  * 1.2;
   $(".content").hover( function() {
-        $(".content").animate({ fontSize: newSize}, 100);
+        $(".content").animate({ fontSize: newSize}, 200);
     }, function() {
-        $(".content").animate({ fontSize: oldSize}, 100);
+        $(".content").animate({ fontSize: oldSize}, 200);
     }
   );
 });
+/* end of: "zoom" */

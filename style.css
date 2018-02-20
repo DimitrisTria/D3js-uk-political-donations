@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #ffffcc;
     font-family:'Raleway', 'Open Sans', sans-serif;
 }
 p {
@@ -21,31 +21,32 @@ li {
 
 /* Information boxes for different chart layouts */
 /* Positioning */
-#initial-content, #a, #b, #c, #d, #e, #f, #view-party-type, #view-donor-type, #view-source-type, #partyInfo, #conservative, #labour, #libdem, #individual, #company, #union, #society, #other, #public-or-private-money, #public-or-private-money-split, #private-money, #public-money, #view-donor-amount, #first-amount-interval, #second-amount-interval, #third-amount-interval { 
+#initial-content, #a, #b, #c, #d, #e, #f, #view-party-type, #view-donor-type, #view-source-type, #partyInfo, #conservative, #labour, #libdem, #individual, #company, #union, #society, #other, #public-or-private-money, #public-or-private-money-split, #private-money, #public-money { 
     position: absolute; 
 }
 
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type, #view-donor-amount {
+#view-party-type, #view-donor-type, #view-source-type {
     display: none;  /*text on page load*/
 }
 
-/* View containers */
+/* View containers (text)*/
 #initial-content, #view-source-type {
-    left: 650px;
-    width: 400px;
+    left: 45vw;
+    width: 500px;
 }
 #view-party-type {
-    left: 650px;
+    left: 45vw;
     width: 272px;
 }
+/* end of: View containers (text)*/
 
 /* Public or private funds view */
 #public-or-private-money {
     max-width: 300px;
 }
 #public-or-private-money-split {
-    top: 550px;
+    top: 570px;
     left: -600px;
     text-align: center;   
 }
@@ -53,42 +54,54 @@ li {
     width: 200px;
 }
 #private-money {
-    left: 200px;
+    left: 150px;
 }
 #public-money {
-    left: 610px;
+    left: 550px;
 }
+/* end of: Public or private funds view */
 
 /* Party view */
-#conservative, #labour, #libdem { padding: 10px; }
+#conservative, #labour, #libdem {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
 #conservative {
     background: rgba(0, 255, 0, 0.7);
     top: 100px;
 }
 #labour {
     background: rgba(255, 0, 255, 0.7);
-    top: 320px;
+    top: 360px;
 }
 #libdem {
     background: rgba(0, 255, 255, 0.7);
-    top: 540px;
+    top: 590px;
 }
+/* end of: Party view */
 
 /* Donor type layout */
 #view-donor-type {
     height: 100%;
-    left: 500px;
+    left: 32vw;
     width: 370px;
-    
 }
 #individual {
-    top: 55px;
+    top: 70px;
+    text-align: left;
+    left: 0;
 }
 #company {
-    top: 390px;
+    top: 360px;
+    text-align: left;
+    left: 0;
 }
 #union {
-    top: 660px;
+    top: 580px;
+    text-align: left;
+    left: 0;
 }
 #society {
     top: 205px;
@@ -96,13 +109,13 @@ li {
     right: 0;
 }
 #other {
-    top: 530px;
+    top: 470px;
     text-align: right;
     right: 0
 }
+/* end of: Donor type layout */
 
 /* Value scale */
-
 #value-scale {
     opacity: 0.5;
     font-size: 0.75em;
@@ -131,15 +144,15 @@ circle.active {
     fill: none;
 }
 .tooltip {
-    margin: 0;
-    padding: 5px;
+    margin: 0px;
+    padding: 0px;
     line-height: 1.4;
     display: none;
     height: 150px;
     width: 280px;
     text-align: left;
-    border: 4px solid rgba(0, 0, 0, .8);
-    border-radius: 2px;
+    border: 4px solid rgba(0, 0, 0, 0.7);
+    border-radius: 1px;
     -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
     box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
@@ -231,30 +244,46 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     outline: 0;
 }
 .pure-button-active, .pure-button:active {
-    color: rgb(0, 120, 231);
-    color: #fff
-}.public-private {
+    color: rgb(0, 120, 0);
+    color: #CCFFCC
+}
+.switch {
 
 }
 
 /* my stuff */
 .content {
-    font-size:10pt;
+    font-size:11pt;
     font-family:Arial,sans-serif;
 }
-#view-donor-amount {
+
+#view-by-amount {
+    display: none; /* page on load */
+    position: absolute;
     text-align: center;
+    margin: 0;
+}
+#view-by-amount-title {
+    position: absolute;
+    width: 500px;
+    left: 16vw;
+}
+#first-amount-interval, #second-amount-interval, #third-amount-interval {
+    position: absolute;
+    top: 520px;
 }
 #first-amount-interval {
-    top: 520px;
-    width: 25vw;
+    left: 10vw;
 }
 #second-amount-interval {
-    top: 520px;
-    width: 60vw;
+    left: 26vw;
 }
 #third-amount-interval {
-    top: 520px;
-    width: 100vw;
+    left: 45vw;
+}
+
+#view-recent-donors {
+    position: absolute;
+    text-align: left;
 }
 /* end of: mystuff */
