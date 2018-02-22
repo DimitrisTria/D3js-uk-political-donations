@@ -127,11 +127,15 @@ li {
 #d { top: 485px;}
 #e { top: 435px;}
 #f { top: 648px; left: 575px; }
+
+#chart {
+    /* */
+}
 /* End of view */
 
 circle {
     stroke: rgba(238, 238, 238, 1);
-    stroke-width: 0.5;
+    -stroke-width: 0.5;
 }
 circle.active {
     stroke: rgba(17, 17, 17, 0.8);
@@ -248,15 +252,11 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     color: #CCFFCC
 }
 .switch {
-
+    /* */
 }
 
 /* my stuff */
-.content {
-    font-size:11pt;
-    font-family:Arial,sans-serif;
-}
-
+/* my ids */
 #view-by-amount {
     display: none; /* page on load */
     position: absolute;
@@ -281,9 +281,46 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 #third-amount-interval {
     left: 45vw;
 }
-
-#view-recent-donors {
+#view-donor-image-history-bar {
     position: absolute;
-    text-align: left;
+    margin: 0;
+    padding: 0px;
+    left: 33vw;
+    top: 970px;
+    height: 50px;
+    width: 500px;
+    border: 4px solid rgba(50, 10, 0, 0.7);
+    border-radius: 2px;
+    box-shadow: 0px -3px 10px rgba(20, 20, 20, 0.7);
+}
+
+/* my classes */
+.myDefaultClass {
+    position: absolute;
+    margin: 0;
+    text-align: center;
+}
+.content {
+    font-size:11pt;
+    font-family:Arial,sans-serif;
+}
+.myButton {
+    font-size: 100%;
+    *font-size: 90%;
+    /*IE 6/7 - To reduce IE's oversized button text*/
+    *overflow: visible;
+    /*IE 6/7 - Because of IE's overly large left/right padding on buttons */
+    padding: 0.5em 1.5em 0.5em;
+    color: #444;
+    /* rgba not supported (IE 8) */
+    color: rgba(0, 0, 0, 0.80);
+    /* rgba supported */
+    *color: #444;
+    border: 1px solid #999;
+    border: none rgba(0, 0, 0, 0);
+    background-color: #9ABCEF;
+    text-decoration: none;
+    border-radius: 2px;
+    -webkit-font-smoothing: antialiased;
 }
 /* end of: mystuff */
