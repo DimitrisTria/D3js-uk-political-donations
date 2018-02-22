@@ -31,6 +31,11 @@
         
         var menuButtonSound = new Audio();
         menuButtonSound.src = "assets/sounds/buttonSound.wav";
+        
+        function resetScrol() {
+            scrolX=0;
+            scrolY=0;
+        }
     </script>
 </head>
 <!-- Add feature detection and noscript -->
@@ -38,12 +43,12 @@
 <body>
     <header role="banner" id="title"> <h1>Who's funding the big three?</h1> </header>
     <nav role="navigation">
-        <ul>
-            <li> <a href="#" role="button" class="pure-button switch" id="all-donations" onmousedown="menuButtonSound.play()">All money</a> </li>
-            <li> <a href="#" role="button" class="pure-button switch" id="group-by-money-source" onmousedown="menuButtonSound.play()">The public's purse</a> </li>
-            <li> <a href="#" role="button" class="pure-button switch" id="group-by-party" onmousedown="menuButtonSound.play()">Split private by party</a> </li>
-            <li> <a href="#" role="button" class="pure-button switch" id="group-by-donor-type" onmousedown="menuButtonSound.play()">Split by type of donor</a> </li>
-            <li> <a href="#" role="button" class="pure-button switch" id="group-by-donor-amount" onmousedown="menuButtonSound.play()">Split by amount of donation</a> </li>
+        <ul onmousedown="menuButtonSound.play()">
+            <li> <a href="#" role="button" id="all-donations" class="pure-button switch"> All money</a> </li>
+            <li> <a href="#" role="button" id="group-by-money-source" class="pure-button switch"> The public's purse</a> </li>
+            <li> <a href="#" role="button" id="group-by-party" class="pure-button switch">Split private by party</a> </li>
+            <li> <a href="#" role="button" id="group-by-donor-type" class="pure-button switch">Split by type of donor</a> </li>
+            <li> <a href="#" role="button" id="group-by-donor-amount" class="pure-button switch">Split by amount of donation</a> </li>
         </ul>
     </nav>
 
@@ -164,18 +169,24 @@
         <!-- End split by the amount of the donation -->
     </div>
     
-    <div style="top: 910px; left: 0vw; position: absolute">
-        <h3> Recently viewed </h3>
-    </div>
+    <div id="chart"></div>
     
-    <div id="chart"> </div>
-    <div id="view-recent-donors"> </div>
+    <!-- history bar
+    <div class="myDefaultClass" style="top:930px; left:46.5vw;"> <h4> history bar </h4>  </div>
+    <div id="view-donor-image-history-bar"></div>
+    end of: history bar -->
     
-    <script src="js/src/jquery.min.js"></script>
+    <li> <a href="#" role="button" style="right: 15px; top: 980px;" class="myDefaultClass myButton" onmousedown="resetScrol()">
+        Go to top
+    </a> </li>
+    
+    <script src="js/libs/jquery.min.js"></script>
     <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>'); </script>    
-    <script src="js/src/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
+    <script src='js/libs/responsivevoice.js'></script>
+    <script src="js/globalVariables.js"></script>
+    <script src="js/physics.js"></script>
     <script src="js/chart.js"></script>
-    <script src='js/src/responsivevoice.js'></script>
 </body>
 
 </html>
