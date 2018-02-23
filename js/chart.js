@@ -143,7 +143,7 @@ function mouseoverCircle(d) {
       .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) - 13) + "px").html(infoBox).style("display","block");
 
     responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
-    addImagesToHistoryBar(imagePath);
+    //addImagesToHistoryBar(imagePath);
 }
 
 function mouseoutCircle() {
