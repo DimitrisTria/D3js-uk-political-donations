@@ -10,7 +10,7 @@ var radius = d3.scale.sqrt().range([10, 20]);
 var fill = d3.scale.ordinal().range(["#CC0066", "#00CC66", "#00FFCC"]); //circles colors (green-purple-cyan)
 var comma = d3.format(",.0f");
 
-
 var sizeOfImageHistoryBar = 10;
 var imageHistoryBarCounter=0;
-var listOfImageHistoryBar = document.getElementById("view-donor-image-history-bar");
+var listOfImageHistoryBarElement = document.getElementById("view-donor-image-history-bar");
+var donorsNameElement = document.getElementById("view-donors-name");

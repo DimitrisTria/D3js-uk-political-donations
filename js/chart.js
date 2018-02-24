@@ -1,4 +1,4 @@
-/* global d3, w, nodes, h, nodeGroup, all, sizeOfImageHistoryBar, listOfImageHistoryBar, responsiveVoice */
+/* global d3, w, nodes, h, nodeGroup, all, sizeOfImageHistoryBar, listOfImageHistoryBarElement, responsiveVoice, donorsNameElement */
 
 /* ----- event handler ----- */
 $(document).ready(function() {
@@ -96,18 +96,11 @@ function start() {
             .attr("donor", function(d) { return d.donor; })
             .attr("entity", function(d) { return d.entity; })
             .attr("party", function(d) { return d.party; })
-            // disabled because of slow Firefox SVG rendering
-            // though I admit I'm asking a lot of the browser and cpu with the number of nodes
-            //.style("opacity", 0.9)
             .attr("r", 0)
             .style("fill", function(d) { return fill(d.party); })
-            .style("left", 30 + "vw")
             .on("mouseover", mouseoverCircle)
             .on("mouseout", mouseoutCircle)
             .on("click", clickCircle);
-            // Alternative title based 'tooltips'
-            // node.append("title")
-            //.text(function(d) { return d.donor; });
 
     force.gravity(0)
             .friction(0.75)
@@ -143,7 +136,7 @@ function mouseoverCircle(d) {
       .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) - 13) + "px").html(infoBox).style("display","block");
 
     responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
-    //addImagesToHistoryBar(imagePath);
+    //addImagesToHistoryBar(imagePath,d,amount);
 }
 
 function mouseoutCircle() {
@@ -151,7 +144,6 @@ function mouseoutCircle() {
     var mosie = d3.select(this);
     mosie.classed("active", false);
     d3.select(".tooltip").style("display", "none"); /* */
-    
     responsiveVoice.cancel();
 }
 
@@ -167,20 +159,34 @@ function googleSearch(input) {
 /* end of: search with google */
 
 /* image history bar */
-function addImagesToHistoryBar(imagePath) {
+function addImagesToHistoryBar(imagePath,d,amount) {
     var newImg = document.createElement("IMG");
     var imgNode = new Image(50,50);
     imgNode.src = imagePath;
+    imgNode.onclick = function() {
+        googleSearch(d.donor);
+    };
+    imgNode.onmouseover = function() {
+        donorsNameElement.removeChild(donorsNameElement.childNodes[0]);
+        var x = document.createElement("P");
+        var t = document.createTextNode(d.donor);
+        x.appendChild(t);
+        donorsNameElement.insertBefore(t, donorsNameElement.childNodes[0]);
+        responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+    };
+    imgNode.onmouseout = function() {
+        donorsNameElement.innerHTML = "history bar";
+        responsiveVoice.cancel();
+    };
     newImg.appendChild(imgNode);
     
     if(imageHistoryBarCounter >= sizeOfImageHistoryBar) {
-        listOfImageHistoryBar.removeChild(listOfImageHistoryBar.childNodes[sizeOfImageHistoryBar-1]); //remove last image
-    }
-    else {
+        listOfImageHistoryBarElement.removeChild(listOfImageHistoryBarElement.childNodes[sizeOfImageHistoryBar-1]); //remove last image
+    } else {
         imageHistoryBarCounter=imageHistoryBarCounter+1;
     }
     
-    listOfImageHistoryBar.insertBefore(imgNode, listOfImageHistoryBar.childNodes[0]); //append new at begin
+    listOfImageHistoryBarElement.insertBefore(imgNode, listOfImageHistoryBarElement.childNodes[0]); //append new at begin
 }
 /* end of: image history bar */
 
