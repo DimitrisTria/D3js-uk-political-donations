@@ -1,4 +1,21 @@
-/* global d3, w, nodes, h, nodeGroup, all, sizeOfImageHistoryBar, listOfImageHistoryBarElement, responsiveVoice, donorsNameElement */
+/* global d3, w, nodes, h, nodeGroup, all, responsiveVoice, sizeOfImageHistoryBar, listOfImageHistoryBarElement, donorsNameElement, newImgElement */
+
+var w = 1000, h = 800;  //svg size for circles
+var nodes = [];
+var svg = d3.select("#chart").append("svg").attr("id", "svg").attr("width", w).attr("height", h);
+var nodeGroup = svg.append("g");
+var tooltip = d3.select("#chart").append("div").attr("class", "tooltip").attr("id", "tooltip");
+var radius = d3.scale.sqrt().range([20, 20]);
+var fill = d3.scale.ordinal().range(["#CC0066", "#00CC66", "#00FFCC"]); //circles colors (purple-green-cyan)
+var comma = d3.format(",.0f");
+
+var responsiveVoice;
+var sizeOfImageHistoryBar = 10, imageHistoryBarCounter = 0;
+var listOfImageHistoryBarElement = document.getElementById("view-donor-image-history-bar");
+var donorsNameElement = document.getElementById("view-donors-name");
+var newPElement = document.createElement("P");
+var newAElement = document.createElement("A");
+var newImgElement = document.createElement("IMG");
 
 /* ----- event handler ----- */
 $(document).ready(function() {
@@ -60,6 +77,7 @@ function transition(name) {
 }
 /* ----- end of: event mode ----- */
 
+/* display */
 function display(data) {
     maxVal = d3.max(data, function(d) { return d.amount; });
     var radiusScale = d3.scale.sqrt().domain([0, maxVal]).range([10, 20]);
@@ -86,6 +104,7 @@ function display(data) {
 
     return start();
 }
+/* end of: display */
 
 function start() {
     node = nodeGroup.selectAll("circle")
@@ -115,36 +134,37 @@ function start() {
 }
 
 /* ----- Mouse events (on circles)  ----- */
+var amount,offset,imagePath,infoBox;
+
 function mouseoverCircle(d) {
     // tooltip popup
-    var mosie = d3.select(this);
-    var amount = mosie.attr("amount");
-    var offset = $("svg").offset();
+    imagePath = "assets/photos/" + d.donor + ".ico";
+    amount = d3.select(this).attr("amount");
+    offset = $("svg").offset();
     
-    var imagePath = "assets/photos/" + d.donor + ".ico";
     /* info box */
-    var infoBox = "<p> Source: <b>" + d.donor + "</b> " +  "<span><img src='" + imagePath 
+    infoBox = "<p> Source: <b>" + d.donor + "</b> " +  "<span><img src='" + imagePath 
                     + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>"
                     + "<p> Recipient: <b>" + d.partyLabel + "</b></p>"
                     + "<p> Type of donor: <b>" + d.entityLabel + "</b></p>"
                     + "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
     
-    mosie.classed("active", true);
+    d3.select(this).classed("active", true);
 
     /* info box apearance */   /* top: ... - 10 (boliko sto mati)*/
     d3.select(".tooltip").style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-      .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) - 13) + "px").html(infoBox).style("display","block");
+        .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) - 13) + "px")
+        .style("z-index", 2).html(infoBox).style("display","block");
 
-    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
-    //addImagesToHistoryBar(imagePath,d,amount);
+    //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+    addImagesToHistoryBar(imagePath,d,amount);
 }
 
 function mouseoutCircle() {
     /* no more tooltips */
-    var mosie = d3.select(this);
-    mosie.classed("active", false);
+    d3.select(this).classed("active", false);
     d3.select(".tooltip").style("display", "none"); /* */
-    responsiveVoice.cancel();
+    //responsiveVoice.cancel();
 }
 
 function clickCircle(d) {
@@ -159,26 +179,31 @@ function googleSearch(input) {
 /* end of: search with google */
 
 /* image history bar */
+var imgNode,tempColor;
 function addImagesToHistoryBar(imagePath,d,amount) {
-    var newImg = document.createElement("IMG");
-    var imgNode = new Image(50,50);
+    imgNode = new Image(50,50);
     imgNode.src = imagePath;
     imgNode.onclick = function() {
         googleSearch(d.donor);
     };
     imgNode.onmouseover = function() {
-        donorsNameElement.removeChild(donorsNameElement.childNodes[0]);
-        var x = document.createElement("P");
-        var t = document.createTextNode(d.donor);
-        x.appendChild(t);
-        donorsNameElement.insertBefore(t, donorsNameElement.childNodes[0]);
-        responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+        if(d.color === "#F02233") {
+            tempColor = "#CC0066";
+        }
+        if(d.color === "#087FBD") {
+            tempColor = "#00CC66";
+        }
+        if(d.color === "#FDBB30") {
+            tempColor = "#00FFCC";
+        }
+        donorsNameElement.innerHTML = "<p style='color:" +tempColor +"; border:2px solid black; padding:2px; background-color:#ffffff;'>" +d.donor +"</p>";
+        //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     };
     imgNode.onmouseout = function() {
-        donorsNameElement.innerHTML = "history bar";
-        responsiveVoice.cancel();
+        donorsNameElement.innerHTML = "";
+        //responsiveVoice.cancel();
     };
-    newImg.appendChild(imgNode);
+    newImgElement.appendChild(imgNode);
     
     if(imageHistoryBarCounter >= sizeOfImageHistoryBar) {
         listOfImageHistoryBarElement.removeChild(listOfImageHistoryBarElement.childNodes[sizeOfImageHistoryBar-1]); //remove last image
@@ -191,9 +216,10 @@ function addImagesToHistoryBar(imagePath,d,amount) {
 /* end of: image history bar */
 
 /* "zoom" */
+var oldSize, newSize;
 $(document).ready(function() {
-  var oldSize = parseFloat($(".content").css('font-size'));
-  var newSize = oldSize  * 1.15;
+  oldSize = parseFloat($(".content").css('font-size'));
+  newSize = oldSize  * 1.15;
   $(".content").hover( function() {
         $(".content").animate({ fontSize: newSize}, 200);
     }, function() {

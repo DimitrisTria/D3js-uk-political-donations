@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html left="0">
 
 <head>
     <meta charset="utf-8">
@@ -14,7 +14,7 @@
     <meta property="og:image:height" content="200" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700">
-    
+
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-44807543-1']);
@@ -31,27 +31,27 @@
         
         var menuButtonSound = new Audio();
         menuButtonSound.src = "assets/sounds/buttonSound.wav";
-        
-        function resetScrol() {
-            scrolX=0;
-            scrolY=0;
-        }
     </script>
 </head>
 <!-- Add feature detection and noscript -->
 
 <body>
-    <header role="banner" id="title"> <h1>Who's funding the big three?</h1> </header>
-    <nav role="navigation">
-        <ul onmousedown="menuButtonSound.play()">
-            <li> <a href="#" role="button" id="all-donations" class="pure-button switch"> All money</a> </li>
-            <li> <a href="#" role="button" id="group-by-money-source" class="pure-button switch"> The public's purse</a> </li>
-            <li> <a href="#" role="button" id="group-by-party" class="pure-button switch">Split private by party</a> </li>
-            <li> <a href="#" role="button" id="group-by-donor-type" class="pure-button switch">Split by type of donor</a> </li>
-            <li> <a href="#" role="button" id="group-by-donor-amount" class="pure-button switch">Split by amount of donation</a> </li>
-        </ul>
-    </nav>
-
+    <div id="view-header">
+        <h1>Who's funding the big three?</h1>
+        
+        <nav role="navigation" id="menuButtons">
+            <li> <a href="#start" role="button" id="all-donations" class="pure-button switch" onmousedown="menuButtonSound.play();">All money</a> </li>
+            <li> <a href="#start" role="button" id="group-by-money-source" class="pure-button switch" onmousedown="menuButtonSound.play();">The public's purse</a> </li>
+            <li> <a href="#start" role="button" id="group-by-party" class="pure-button switch" onmousedown="menuButtonSound.play();">Split private by party</a> </li>
+            <li> <a href="#start" role="button" id="group-by-donor-type" class="pure-button switch" onmousedown="menuButtonSound.play();">Split private by type of donor</a> </li>
+            <li> <a href="#start" role="button" id="group-by-donor-amount" class="pure-button switch" onmousedown="menuButtonSound.play();">Split by amount of donation</a> </li>
+            <li> <a href="#view-donor-image-history-bar" role="button" class="myButton" onmousedown="menuButtonSound.play();" style="position: absolute; right: 5vw; top: 80px;">History Bar</a> </li>
+        </nav>
+    </div>
+    
+    <div id="start" style="height: 117px; top: 0px;"></div>
+    
+    <!-- annotations -->
     <div id="annotations">
         <!-- Initial annotations -->
         <div id="initial-content" class="content">
@@ -156,11 +156,9 @@
         <!-- End type of donor -->
         
         <!-- Split by the amount of the donation -->
-        <div id="view-by-amount">
+        <div id="view-by-amount-of-donation">
             <div class="content">
-                <div id="view-by-amount-title">
-                    <h2> Split by the amount of the donation </h2>
-                </div>
+                <div id="view-by-amount-of-donation-title"> <h2> Split by the amount of the donation </h2> </div>
                 <div id="first-amount-interval"> &#163;0-100,000 </div>
                 <div id="second-amount-interval"> &#163;100,000-1,000,000 </div>
                 <div id="third-amount-interval"> &#163;1,000,000-20,000,000 </div>
@@ -168,28 +166,35 @@
         </div>
         <!-- End split by the amount of the donation -->
     </div>
+    <!-- end of: annotations -->
     
+    <!-- charts -->
     <div id="chart"></div>
-    
-    <!-- history bar
-    <div id="view-donors-name" class="myDefaultClass" style="top:930px; left: 44vw;"> history bar </div>
+    <div id="chart2"></div>
+    <!-- end of: charts -->
+
+    <!-- history bar -->
+    <div id="view-donors-name"></div>
     <div id="view-donor-image-history-bar"></div>
-    end of: history bar -->
+    <!--end of: history bar-->
+
+    <li>
+        <a href="#" role="button" id="view-go-to-top" class="myDefaultClass myButton" onmousedown="menuButtonSound.play();">
+            Go to top
+        </a>
+    </li>
     
-    <li> <a href="#" role="button" style="right: 15px; top: 980px;" class="myDefaultClass myButton" onmousedown="resetScrol()">
-        Go to top
-    </a> </li>
+    <footer id="view-footer">
+        
+    </footer>
     
     <script src="js/libs/jquery.min.js"></script>
     <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>'); </script>    
     <script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
     <script src='js/libs/responsivevoice.js'></script>
-    <script src="js/globalVariables.js"></script>
-    <script src="js/physics.js"></script>
     <script src="js/chart.js"></script>
-    
-    <footer>
-    </footer>
+    <script src="js/chart2.js"></script>
+    <script src="js/chart.physics.js"></script>
 </body>
 
 </html>

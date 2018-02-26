@@ -46,7 +46,6 @@ li {
     max-width: 300px;
 }
 #public-or-private-money-split {
-    top: 570px;
     left: -600px;
     text-align: center;   
 }
@@ -55,9 +54,11 @@ li {
 }
 #private-money {
     left: 150px;
+    top: 528px;
 }
 #public-money {
     left: 550px;
+    top: 523px;
 }
 /* end of: Public or private funds view */
 
@@ -74,11 +75,11 @@ li {
 }
 #labour {
     background: rgba(255, 0, 255, 0.7);
-    top: 360px;
+    top: 340px;
 }
 #libdem {
     background: rgba(0, 255, 255, 0.7);
-    top: 590px;
+    top: 575px;
 }
 /* end of: Party view */
 
@@ -213,7 +214,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     /*IE 6/7 - To reduce IE's oversized button text*/
     *overflow: visible;
     /*IE 6/7 - Because of IE's overly large left/right padding on buttons */
-    padding: 0.5em 1.5em 0.5em;
+    padding: 0.4em 1em 0.4em;
     color: #444;
     /* rgba not supported (IE 8) */
     color: rgba(0, 0, 0, 0.80);
@@ -255,15 +256,39 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     /* */
 }
 
-/* my stuff */
+/*****my stuff ******/
 /* my ids */
-#view-by-amount {
+#view-header {
+    margin: 0px;
+    padding: 10px;
+    top: 0px;
+    height: 97px;
+    position: fixed;
+    width: 100vw;
+    background-color: rgba(204,255,204,0.85);
+    text-align: center;
+    z-index: 1;
+}
+#menuButtons {
+    margin: 0px;
+    padding: 0px;
+}
+#start {
+    /* */
+}
+#anotations {
+    /* */
+}
+#chart {
+    
+}
+#view-by-amount-of-donation {
     display: none; /* page on load */
     position: absolute;
     text-align: center;
     margin: 0;
 }
-#view-by-amount-title {
+#view-by-amount-of-donation-title {
     position: absolute;
     width: 500px;
     left: 16vw;
@@ -281,22 +306,46 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 #third-amount-interval {
     left: 45vw;
 }
+#view-donors-name {
+    position: absolute;
+    margin: 0;
+    padding: 0px;
+    top: 955px;
+    left: 41vw;
+}
 #view-donor-image-history-bar {
     position: absolute;
     margin: 0px;
     padding: 3px;
     left: 33vw;
-    top: 970px;
+    right: -33vw;
+    top: 1000px;
     height: 50px;
     width: 500px;
     border: 4px solid rgba(50, 10, 0, 0.7);
     box-shadow: 0px -3px 10px rgba(20, 20, 20, 0.7);
+    background-color: #ffffff;
+}
+#view-go-to-top {
+    right: 3vw;
+    top: 1015px;
+}
+#view-footer {
+    position: absolute;
+    height: 97px;
+    width: 98.4vw;
+    background-color: #CCFFCC;
+    top: 1070px;
+    text-align: center;
+    align-content: center;
+    margin: 0px;
 }
 
 /* my classes */
 .myDefaultClass {
     position: absolute;
     margin: 0;
+    padding: 0px;
     text-align: center;
 }
 .content {
@@ -309,7 +358,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     /*IE 6/7 - To reduce IE's oversized button text*/
     *overflow: visible;
     /*IE 6/7 - Because of IE's overly large left/right padding on buttons */
-    padding: 0.5em 1.5em 0.5em;
+    padding: 0.4em 1em 0.4em;
     color: #444;
     /* rgba not supported (IE 8) */
     color: rgba(0, 0, 0, 0.80);
