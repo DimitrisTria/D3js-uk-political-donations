@@ -214,17 +214,3 @@ function addImagesToHistoryBar(imagePath,d,amount) {
     listOfImageHistoryBarElement.insertBefore(imgNode, listOfImageHistoryBarElement.childNodes[0]); //append new at begin
 }
 /* end of: image history bar */
-
-/* "zoom" */
-var oldSize, newSize;
-$(document).ready(function() {
-  oldSize = parseFloat($(".content").css('font-size'));
-  newSize = oldSize  * 1.15;
-  $(".content").hover( function() {
-        $(".content").animate({ fontSize: newSize}, 200);
-    }, function() {
-        $(".content").animate({ fontSize: oldSize}, 200);
-    }
-  );
-});
-/* end of: "zoom" */

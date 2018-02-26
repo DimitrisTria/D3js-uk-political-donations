@@ -1,5 +1,5 @@
 body {
-    background-color: #FFFFCC;
+    background-color: #FFFFFF;
     font-family:'Raleway', 'Open Sans', sans-serif;
 }
 p {
@@ -348,9 +348,15 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     padding: 0px;
     text-align: center;
 }
-.content {
-    font-size:11pt;
-    font-family:Arial,sans-serif;
+.zoom {
+    transition: all .2s ease-in-out;
+    z-index: 0;
+}
+.zoom:hover {
+    transform: scale(1.2);
+    z-index: 2;
+    border: 2px solid black;
+    background-color: #ffffcc;
 }
 .myButton {
     font-size: 100%;
@@ -372,3 +378,13 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     -webkit-font-smoothing: antialiased;
 }
 /* end of: mystuff */
+
+header.smaller #view-header {
+    box-shadow: 0 4px 6px -4px #999999;
+    -moz-box-shadow: 0 4px 6px -4px #999999;
+    -webkit-box-shadow: 0 4px 6px -4px #999999;
+}
+header.smaller {
+    height: 70px;
+    padding: 0 0 0 0;
+}
