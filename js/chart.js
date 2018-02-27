@@ -162,7 +162,7 @@ function mouseoverCircle(d) {
         .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) - 13) + "px")
         .style("z-index", 2).html(infoBox).style("display","block");
 
-    //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     addImagesToHistoryBar(imagePath,d,amount);
 }
 
@@ -170,7 +170,7 @@ function mouseoutCircle() {
     /* no more tooltips */
     d3.select(this).classed("active", false);
     d3.select(".tooltip").style("display", "none"); /* */
-    //responsiveVoice.cancel();
+    responsiveVoice.cancel();
 }
 
 function clickCircle(d) {
@@ -205,11 +205,11 @@ function addImagesToHistoryBar(imagePath,d,amount) {
         
         donorsNameElement.innerHTML = "<p class='myDefaultClass' style='color:" +newDColor +"; border:2px solid black; \n\
                                           background-color:#ffffff; left:0vw; width:350px; text-allign:center;'>" +d.donor +"</p>";
-        //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+        responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     };
     imgNode.onmouseout = function() {
         donorsNameElement.innerHTML = "";
-        //responsiveVoice.cancel();
+        responsiveVoice.cancel();
     };
     newImgElement.appendChild(imgNode);
     
