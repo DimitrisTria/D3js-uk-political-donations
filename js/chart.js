@@ -11,11 +11,17 @@ var comma = d3.format(",.0f");
 
 var responsiveVoice;
 var sizeOfImageHistoryBar = 10, imageHistoryBarCounter = 0;
-var listOfImageHistoryBarElement = document.getElementById("view-donor-image-history-bar");
 var donorsNameElement = document.getElementById("view-donors-name");
+var listOfImageHistoryBarElement = document.getElementById("view-donor-image-history-bar");
 var newPElement = document.createElement("P");
 var newAElement = document.createElement("A");
 var newImgElement = document.createElement("IMG");
+
+/* my svg */
+var myW = 500;
+var myH = 800;
+var mySVG = d3.select("#chart").append("svg").attr("id", "mySVG").attr("width", myW).attr("height", myH);
+/* end of: my svg */
 
 /* ----- event handler ----- */
 $(document).ready(function() {
@@ -35,7 +41,7 @@ function transition(name) {
         $("#view-donor-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
         $("#view-party-type").fadeOut(250);
-        $("#view-by-amount").fadeOut(250);
+        $("#view-by-amount-of-donation").fadeOut(250);
         return total();
     }
     if (name === "group-by-party") {
@@ -44,7 +50,7 @@ function transition(name) {
         $("#view-donor-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
         $("#view-party-type").fadeIn(1000);
-        $("#view-by-amount").fadeOut(250);
+        $("#view-by-amount-of-donation").fadeOut(250);
         return partyGroup();
     }
     if (name === "group-by-donor-type") {
@@ -53,7 +59,7 @@ function transition(name) {
         $("#view-party-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
         $("#view-donor-type").fadeIn(1000);
-        $("#view-by-amount").fadeOut(250);
+        $("#view-by-amount-of-donation").fadeOut(250);
         return donorType();
     }
     if (name === "group-by-money-source") {
@@ -62,7 +68,7 @@ function transition(name) {
         $("#view-donor-type").fadeOut(250);
         $("#view-party-type").fadeOut(250);
         $("#view-source-type").fadeIn(1000);
-        $("#view-by-amount").fadeOut(250);
+        $("#view-by-amount-of-donation").fadeOut(250);
         return fundsType();
     }
     if(name === "group-by-donor-amount") {
@@ -71,7 +77,7 @@ function transition(name) {
         $("#view-donor-type").fadeOut(250);
         $("#view-party-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
-        $("#view-by-amount").fadeIn(1000);
+        $("#view-by-amount-of-donation").fadeIn(1000);
         return donorAmount();
     }
 }
@@ -179,7 +185,7 @@ function googleSearch(input) {
 /* end of: search with google */
 
 /* image history bar */
-var imgNode,tempColor;
+var imgNode,newDColor;
 function addImagesToHistoryBar(imagePath,d,amount) {
     imgNode = new Image(50,50);
     imgNode.src = imagePath;
@@ -188,15 +194,17 @@ function addImagesToHistoryBar(imagePath,d,amount) {
     };
     imgNode.onmouseover = function() {
         if(d.color === "#F02233") {
-            tempColor = "#CC0066";
+            newDColor = "#CC0066";
         }
         if(d.color === "#087FBD") {
-            tempColor = "#00CC66";
+            newDColor = "#00CC66";
         }
         if(d.color === "#FDBB30") {
-            tempColor = "#00FFCC";
+            newDColor = "#00FFCC";
         }
-        donorsNameElement.innerHTML = "<p style='color:" +tempColor +"; border:2px solid black; padding:2px; background-color:#ffffff;'>" +d.donor +"</p>";
+        
+        donorsNameElement.innerHTML = "<p class='myDefaultClass' style='color:" +newDColor +"; border:2px solid black; \n\
+                                          background-color:#ffffff; left:0vw; width:350px; text-allign:center;'>" +d.donor +"</p>";
         //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     };
     imgNode.onmouseout = function() {

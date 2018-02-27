@@ -47,18 +47,21 @@ li {
 }
 #public-or-private-money-split {
     left: -600px;
-    text-align: center;   
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
 }
 #private-money, #public-money {
-    width: 200px;
+    width: 150px;
+    height: 125px;
 }
 #private-money {
     left: 150px;
-    top: 528px;
+    top: 527px;
 }
 #public-money {
     left: 550px;
-    top: 523px;
+    top: 522px;
 }
 /* end of: Public or private funds view */
 
@@ -311,20 +314,19 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     margin: 0;
     padding: 0px;
     top: 955px;
-    left: 41vw;
+    left: 38.5vw;
 }
 #view-donor-image-history-bar {
     position: absolute;
     margin: 0px;
     padding: 3px;
     left: 33vw;
-    right: -33vw;
     top: 1000px;
     height: 50px;
     width: 500px;
-    border: 4px solid rgba(50, 10, 0, 0.7);
+    border: 3px solid rgba(50, 10, 0, 0.7);
     box-shadow: 0px -3px 10px rgba(20, 20, 20, 0.7);
-    background-color: #ffffff;
+    background-color: rgba(204,255,204,0.85);
 }
 #view-go-to-top {
     right: 3vw;
@@ -334,10 +336,8 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     position: absolute;
     height: 97px;
     width: 98.4vw;
-    background-color: #CCFFCC;
+    background-color: rgba(204,255,204,0.85);
     top: 1070px;
-    text-align: center;
-    align-content: center;
     margin: 0px;
 }
 
@@ -353,10 +353,11 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     z-index: 0;
 }
 .zoom:hover {
-    transform: scale(1.2);
+    transform: scale(1.25);
     z-index: 2;
-    border: 2px solid black;
+    padding: 2px;
     background-color: #ffffcc;
+    border: 2px solid black;
 }
 .myButton {
     font-size: 100%;
@@ -378,13 +379,3 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     -webkit-font-smoothing: antialiased;
 }
 /* end of: mystuff */
-
-header.smaller #view-header {
-    box-shadow: 0 4px 6px -4px #999999;
-    -moz-box-shadow: 0 4px 6px -4px #999999;
-    -webkit-box-shadow: 0 4px 6px -4px #999999;
-}
-header.smaller {
-    height: 70px;
-    padding: 0 0 0 0;
-}

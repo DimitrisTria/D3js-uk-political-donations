@@ -1,5 +1,5 @@
 <!doctype html>
-<html left="0">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -67,13 +67,13 @@
             </div>
         </div>
         
-        <div id="value-scale" class="zoom">    
-            <div id="f"> <p>&#8212;UK average salary</p> </div>
-            <div id="a"> <strong>&#163;25k &#8212;</strong> </div>
-            <div id="b"> <strong>&#163;50k &#8212;</strong> </div>
-            <div id="c"> <strong>&#163;100k &#8212;</strong> </div>
-            <div id="d"> <strong>&#163;500k &#8212;</strong> </div>
-            <div id="e"> <strong>&#163;1m &#8212;</strong> </div>
+        <div id="value-scale">    
+            <div id="f" class="zoom"> <p>&#8212;UK average salary</p> </div>
+            <div id="a" class="zoom"> <strong>&#163;25k &#8212;</strong> </div>
+            <div id="b" class="zoom"> <strong>&#163;50k &#8212;</strong> </div>
+            <div id="c" class="zoom"> <strong>&#163;100k &#8212;</strong> </div>
+            <div id="d" class="zoom"> <strong>&#163;500k &#8212;</strong> </div>
+            <div id="e" class="zoom"> <strong>&#163;1m &#8212;</strong> </div>
         </div>
         <!-- End initial-->
 
@@ -84,8 +84,8 @@
                 <p>Despite general public opposition to more taxpayer money being given to political parties, public funds are already provided to opposition parties in the form of 'short money' from the House of Commons, House of Lords and Scottish Parliament.</p>
                 <p>The parties also benefit from 'Policy development grants' given by the Electoral Commission.</p>
             </div>
-            <div id="public-or-private-money-split" class="zoom">
-                <div id="private-money">
+            <div id="public-or-private-money-split">
+                <div id="private-money" class="zoom">
                     <h5>Private Donations</h5>
                     <strong>Total: &#163;89,752,524</strong>
                     <p>Proportion of all donations:<strong>77%</strong></p>
@@ -164,14 +164,11 @@
     </div>
     <!-- end of: annotations -->
     
-    <!-- charts -->
     <div id="chart"></div>
-    <div id="chart2"></div>
-    <!-- end of: charts -->
-
+    
     <!-- history bar -->
     <div id="view-donors-name"></div>
-    <div id="view-donor-image-history-bar"></div>
+    <div id="view-donor-image-history-bar" class="zoom"></div>
     <!--end of: history bar-->
 
     <li>
@@ -180,16 +177,13 @@
         </a>
     </li>
     
-    <footer id="view-footer">
-        
-    </footer>
+    <footer id="view-footer"></footer>
     
     <script src="js/libs/jquery.min.js"></script>
     <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>'); </script>    
     <script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
     <script src='js/libs/responsivevoice.js'></script>
     <script src="js/chart.js"></script>
-    <script src="js/chart2.js"></script>
     <script src="js/chart.physics.js"></script>
 </body>
 
