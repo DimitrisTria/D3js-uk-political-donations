@@ -1,27 +1,21 @@
-/* global d3, w, nodes, h, nodeGroup, all, responsiveVoice, sizeOfImageHistoryBar, listOfImageHistoryBarElement, donorsNameElement, newImgElement */
+/* global d3, w, nodes, h, all, responsiveVoice, sizeOfImageHistoryBar, listOfImageHistoryBarElement, donorsNameElement, newImgElement */
 
 var w = 1000, h = 800;  //svg size for circles
 var nodes = [];
+
+/* d3 */
 var svg = d3.select("#chart").append("svg").attr("id", "svg").attr("width", w).attr("height", h);
-var nodeGroup = svg.append("g");
 var tooltip = d3.select("#chart").append("div").attr("class", "tooltip").attr("id", "tooltip");
-var radius = d3.scale.sqrt().range([20, 20]);
+var radius = d3.scale.sqrt().range([10, 20]);
 var fill = d3.scale.ordinal().range(["#CC0066", "#00CC66", "#00FFCC"]); //circles colors (purple-green-cyan)
 var comma = d3.format(",.0f");
-
-var responsiveVoice;
+/* */
 var sizeOfImageHistoryBar = 10, imageHistoryBarCounter = 0;
 var donorsNameElement = document.getElementById("view-donors-name");
 var listOfImageHistoryBarElement = document.getElementById("view-donor-image-history-bar");
 var newPElement = document.createElement("P");
 var newAElement = document.createElement("A");
 var newImgElement = document.createElement("IMG");
-
-/* my svg */
-var myW = 500;
-var myH = 800;
-var mySVG = d3.select("#chart").append("svg").attr("id", "mySVG").attr("width", myW).attr("height", myH);
-/* end of: my svg */
 
 /* ----- event handler ----- */
 $(document).ready(function() {
@@ -113,9 +107,7 @@ function display(data) {
 /* end of: display */
 
 function start() {
-    node = nodeGroup.selectAll("circle")
-            .data(nodes)
-            .enter().append("circle")
+    node = svg.append("g").selectAll("circle").data(nodes).enter().append("circle")
             .attr("class", function(d) { return "node " + d.party; })
             .attr("amount", function(d) { return d.value; })
             .attr("donor", function(d) { return d.donor; })
@@ -127,16 +119,13 @@ function start() {
             .on("mouseout", mouseoutCircle)
             .on("click", clickCircle);
 
-    force.gravity(0)
-            .friction(0.75)
+    force.gravity(0).friction(0.75)
             .charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
             .on("tick", all)
             .start();
 
     //circle build
-    node.transition()
-            .duration(2500)
-            .attr("r", function(d) { return d.radius; });
+    node.transition().duration(2500).attr("r", function(d) { return d.radius; });
 }
 
 /* ----- Mouse events (on circles)  ----- */
@@ -162,7 +151,7 @@ function mouseoverCircle(d) {
         .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) - 13) + "px")
         .style("z-index", 2).html(infoBox).style("display","block");
 
-    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+    //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     addImagesToHistoryBar(imagePath,d,amount);
 }
 
@@ -170,7 +159,7 @@ function mouseoutCircle() {
     /* no more tooltips */
     d3.select(this).classed("active", false);
     d3.select(".tooltip").style("display", "none"); /* */
-    responsiveVoice.cancel();
+    //responsiveVoice.cancel();
 }
 
 function clickCircle(d) {
@@ -179,8 +168,8 @@ function clickCircle(d) {
 /* ----- end of: Mouse events (on circles) ----- */
 
 /* search with google */
-function googleSearch(input) {
-    window.open('http://google.com/search?q=' +input);
+function googleSearch(itemToSearch) {
+    window.open('http://google.com/search?q=' +itemToSearch);
 }
 /* end of: search with google */
 
@@ -205,11 +194,11 @@ function addImagesToHistoryBar(imagePath,d,amount) {
         
         donorsNameElement.innerHTML = "<p class='myDefaultClass' style='color:" +newDColor +"; border:2px solid black; \n\
                                           background-color:#ffffff; left:0vw; width:350px; text-allign:center;'>" +d.donor +"</p>";
-        responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+        //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     };
     imgNode.onmouseout = function() {
         donorsNameElement.innerHTML = "";
-        responsiveVoice.cancel();
+        //responsiveVoice.cancel();
     };
     newImgElement.appendChild(imgNode);
     
@@ -222,3 +211,66 @@ function addImagesToHistoryBar(imagePath,d,amount) {
     listOfImageHistoryBarElement.insertBefore(imgNode, listOfImageHistoryBarElement.childNodes[0]); //append new at begin
 }
 /* end of: image history bar */
+
+var mySvg = d3.select("#chart").append("svg").attr("id", "mySvg").attr("width", w).attr("height", h).style("margin-left", "5vw").style("margin-top", "5vh");
+var myTooltip = d3.select("#chart").append("div").style("opacity", 0).attr("class", "myTooltip");
+
+d3.csv("assets/data/7500up.csv", function(data) {
+
+    var test = mySvg.selectAll("g")
+                .data(data)
+                .enter()
+                .append("g")
+                .attr("class", "myclass")
+                .attr("transform", function() {
+                    return "translate(" +Math.random()*(w-(10/w)) +"," +Math.random()*(h-(10/h)) +")";
+                })
+                .on("mouseover", function(d) {
+                    myTooltip.style("position", "absolute")
+                            .style("width", function(d){
+                                                if(d.donor.length<=5) { return (d.donor.length * 13); }
+                                                else { return (d.donor.length * 9); } 
+                                            } +"px").style("height", "50px")
+                            .style("opacity", 0.9)
+                            .html("donor: " +d.donor +"<BR>" +"amount: " +d.amount);
+                })
+                .on("mouseout", function() {
+                    myTooltip.style("opacity", 0);
+                });
+    
+    test.append("circle")
+            .attr("r", 10)
+            .attr("fill", function(d) {
+                return d.color;
+            });
+            
+    var donors = d3.nest()
+            .key(function(d) { return d.donor; })
+            .rollup(function(a) { return a.length; })
+            .entries(data);
+    
+    donors.unshift({"key": "--ALL--", "value": "???"});
+    var selector = d3.select("#selector");
+    selector
+        .selectAll("option")
+        .data(donors)
+        .enter()
+        .append("option")
+        .text(function(d) { return d.key +":\t" +d.value; })
+        .attr("value", function(d) { return d.key; });
+    
+    selector
+        .on("change", function() {
+            //d3.selectAll(".myclass").attr("opacity", 1.0);
+            var value = selector.property("value");
+            if(value!=="ALL") {
+                d3.selectAll(".myclass")
+                    .filter(function(d) { return d.donor !== value; })
+                    .attr("opacity", 0.1);
+            }
+            if(value==="ALL") {
+                d3.selectAll(".myclass").attr("opacity", 1.0);
+            }
+        }
+    );
+});
