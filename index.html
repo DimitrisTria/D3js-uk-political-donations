@@ -34,29 +34,7 @@
         
         var menuButtonSound = new Audio();
         menuButtonSound.src = "assets/sounds/buttonSound.wav";
-    </script>
-    
-    <script type="text/css">
-        svg {
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-        }
-
-        .axis text{
-            font: Times;
-            font-size: 12px;
-            font-weight: bold;
-        }
-    </script>
-    
+    </script>    
 </head>
 <!-- Add feature detection and noscript -->
 
@@ -65,16 +43,14 @@
         <h1>Who's funding the big three?</h1>
         
         <nav role="navigation" id="menuButtons">
-            <li> <a href="#start" role="button" id="all-donations" class="pure-button switch" onmousedown="menuButtonSound.play();">All money</a> </li>
-            <li> <a href="#start" role="button" id="group-by-money-source" class="pure-button switch" onmousedown="menuButtonSound.play();">The public's purse</a> </li>
-            <li> <a href="#start" role="button" id="group-by-party" class="pure-button switch" onmousedown="menuButtonSound.play();">Split private by party</a> </li>
-            <li> <a href="#start" role="button" id="group-by-donor-type" class="pure-button switch" onmousedown="menuButtonSound.play();">Split private by type of donor</a> </li>
-            <li> <a href="#start" role="button" id="group-by-donor-amount" class="pure-button switch" onmousedown="menuButtonSound.play();">Split by amount of donation</a> </li>
+            <li> <a href="#" role="button" id="all-donations" class="pure-button switch" onmousedown="menuButtonSound.play();">All money</a> </li>
+            <li> <a href="#" role="button" id="group-by-money-source" class="pure-button switch" onmousedown="menuButtonSound.play();">The public's purse</a> </li>
+            <li> <a href="#" role="button" id="group-by-party" class="pure-button switch" onmousedown="menuButtonSound.play();">Split private by party</a> </li>
+            <li> <a href="#" role="button" id="group-by-donor-type" class="pure-button switch" onmousedown="menuButtonSound.play();">Split private by type of donor</a> </li>
+            <li> <a href="#" role="button" id="group-by-donor-amount" class="pure-button switch" onmousedown="menuButtonSound.play();">Split by amount of donation</a> </li>
             <li> <a href="#view-donor-image-history-bar" role="button" id="view-history-bar-button" class="myButton" onmousedown="menuButtonSound.play();">History Bar</a> </li>
         </nav>
     </div>
-    
-    <div id="start" style="height: 110px; top: 0px;"></div>
     
     <!-- annotations -->
     <div id="annotations">
@@ -191,18 +167,19 @@
     </div>
     <!-- end of: annotations -->
     
-    <div id="chart">
-        <select id="selector"></select>
-    </div>
+    <div id="chart"></div>
 
-    <!-- history bar -->
-    <div id="view-donor-image-history-bar">
-        <div id="view-donors-name"></div>
-        <a href="#" role="button" id="view-go-to-top" class="myDefaultClass myButton" onmousedown="menuButtonSound.play();">Go to top</a>
+    <div id="view-footer">
+        <!-- history bar -->
+        <div id="view-donor-image-history-bar">
+            <div id="view-donors-name"></div>
+            <a href="#" role="button" id="view-go-to-top" class="myDefaultClass myButton" onmousedown="menuButtonSound.play();">Go to top</a>
+        </div>
+        <!--end of: history bar-->
+        
+        <p> My github profile: <a href="https://github.com/DimitrisTria/">DimitrisTria</a> </p>
+        <p> The project was forked by: <a href="someone">someone</a> and modified by me</p>
     </div>
-    <!--end of: history bar-->
-
-    <footer id="view-footer"></footer>
     
     <script src="js/libs/jquery.min.js"></script>
     <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>'); </script>    

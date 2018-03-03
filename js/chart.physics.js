@@ -131,10 +131,10 @@ function moveToFunds(alpha) {
 
         if (d.entity !== 'pub') {
             centreX = 350;
-            centreY = 270;
+            centreY = 280;
         } else {
             centreX = publicsPurseCentres[d.entity].x + 60;
-            centreY = 345;
+            centreY = 360;
         }
 
         d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;

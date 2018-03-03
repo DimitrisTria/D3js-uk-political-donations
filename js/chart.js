@@ -23,7 +23,7 @@ $(document).ready(function() {
         var id = d3.select(this).attr("id");
         return transition(id);
     });
-    return d3.csv("assets/data/7500up.csv", display);
+    return d3.csv("assets/data/temp/7500up.csv", display);
 });
 /* ----- end of: event handler ----- */
 
@@ -193,7 +193,7 @@ function addImagesToHistoryBar(imagePath,d,amount) {
         }
         
         donorsNameElement.innerHTML = "<p class='myDefaultClass' style='color:" +newDColor +"; border:2px solid black; \n\
-                                          background-color:#ffffff; left:0vw; width:350px; text-allign:center;'>" +d.donor +"</p>";
+                                          background-color:#ffffcc; left:-0.5vw; width:350px; text-allign:center;'>" +d.donor +"</p>";
         //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     };
     imgNode.onmouseout = function() {
@@ -208,69 +208,6 @@ function addImagesToHistoryBar(imagePath,d,amount) {
         imageHistoryBarCounter=imageHistoryBarCounter+1;
     }
     
-    listOfImageHistoryBarElement.insertBefore(imgNode, listOfImageHistoryBarElement.childNodes[0]); //append new at begin
+    listOfImageHistoryBarElement.insertBefore(imgNode, listOfImageHistoryBarElement.childNodes[0]); //append new image
 }
 /* end of: image history bar */
-
-var mySvg = d3.select("#chart").append("svg").attr("id", "mySvg").attr("width", w).attr("height", h).style("margin-left", "5vw").style("margin-top", "5vh");
-var myTooltip = d3.select("#chart").append("div").style("opacity", 0).attr("class", "myTooltip");
-
-d3.csv("assets/data/7500up.csv", function(data) {
-
-    var test = mySvg.selectAll("g")
-                .data(data)
-                .enter()
-                .append("g")
-                .attr("class", "myclass")
-                .attr("transform", function() {
-                    return "translate(" +Math.random()*(w-(10/w)) +"," +Math.random()*(h-(10/h)) +")";
-                })
-                .on("mouseover", function(d) {
-                    myTooltip.style("position", "absolute")
-                            .style("width", function(d){
-                                                if(d.donor.length<=5) { return (d.donor.length * 13); }
-                                                else { return (d.donor.length * 9); } 
-                                            } +"px").style("height", "50px")
-                            .style("opacity", 0.9)
-                            .html("donor: " +d.donor +"<BR>" +"amount: " +d.amount);
-                })
-                .on("mouseout", function() {
-                    myTooltip.style("opacity", 0);
-                });
-    
-    test.append("circle")
-            .attr("r", 10)
-            .attr("fill", function(d) {
-                return d.color;
-            });
-            
-    var donors = d3.nest()
-            .key(function(d) { return d.donor; })
-            .rollup(function(a) { return a.length; })
-            .entries(data);
-    
-    donors.unshift({"key": "--ALL--", "value": "???"});
-    var selector = d3.select("#selector");
-    selector
-        .selectAll("option")
-        .data(donors)
-        .enter()
-        .append("option")
-        .text(function(d) { return d.key +":\t" +d.value; })
-        .attr("value", function(d) { return d.key; });
-    
-    selector
-        .on("change", function() {
-            //d3.selectAll(".myclass").attr("opacity", 1.0);
-            var value = selector.property("value");
-            if(value!=="ALL") {
-                d3.selectAll(".myclass")
-                    .filter(function(d) { return d.donor !== value; })
-                    .attr("opacity", 0.1);
-            }
-            if(value==="ALL") {
-                d3.selectAll(".myclass").attr("opacity", 1.0);
-            }
-        }
-    );
-});

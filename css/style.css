@@ -1,6 +1,12 @@
+head {
+    margin: 0px;
+    padding: 0px;
+}
 body {
     background-color: #FFFFFF;
     font-family:'Raleway', 'Open Sans', sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 p {
     margin: 5px 0;
@@ -54,14 +60,13 @@ li {
 #private-money, #public-money {
     width: 150px;
     height: 125px;
+    top: 527px;
 }
 #private-money {
     left: 150px;
-    top: 527px;
 }
 #public-money {
     left: 550px;
-    top: 522px;
 }
 /* end of: Public or private funds view */
 
@@ -132,10 +137,13 @@ li {
 #e { top: 435px;}
 #f { top: 648px; left: 575px; }
 
+#anotations {
+    width: auto;
+    height: auto;
+}
 #chart {
-    position: absolute;
-    width: 1000px;
-    height: 1800px;
+    width: auto;
+    height: auto;
 }
 /* End of view */
 
@@ -158,8 +166,8 @@ circle.active {
     padding: 0px;
     line-height: 1.4;
     display: none;
-    height: 150px;
-    width: 280px;
+    height: auto;
+    width: auto;
     text-align: left;
     border: 4px solid rgba(0, 0, 0, 0.7);
     border-radius: 1px;
@@ -268,7 +276,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     padding: 10px;
     top: 0px;
     height: 97px;
-    position: fixed;
+    position: inherit;
     width: 100vw;
     background-color: rgba(204,255,204,0.85);
     text-align: center;
@@ -283,17 +291,11 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     right: 5vw;
     top: 80px;
 }
-#start {
-    /* */
-}
-#anotations {
-    /* */
-}
 #view-by-amount-of-donation {
     display: none; /* page on load */
     position: absolute;
     text-align: center;
-    margin: 0;
+    margin: 0px;
 }
 #view-by-amount-of-donation-title {
     position: absolute;
@@ -315,7 +317,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 }
 #view-donors-name {
     position: absolute;
-    margin: 0;
+    margin: 0px;
     padding: 0px;
     top: -40px;
     left: 83px;
@@ -325,7 +327,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     margin: 0px;
     padding: 3px;
     left: 33vw;
-    top: 2000px;
+    top: -70px;
     height: 50px;
     width: 500px;
     border: 3px solid rgba(50, 10, 0, 0.7);
@@ -334,22 +336,26 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     display: inline;
 }
 #view-go-to-top {
-    right: -30vw;
+    width: auto;
+    height: auto;
+    text-align: center;
+    right: -27vw;
     top: 10px;
 }
 #view-footer {
     position: absolute;
-    height: 77px;
-    width: 98.4vw;
-    background-color: rgba(204,255,204,0.85);
-    top: 2065px;
     margin: 0px;
+    padding: 10px;
+    height: auto;
+    width: 100vw;
+    background-color: rgba(204,255,204,0.85);
+    top: 1000px;
 }
 
 /* my classes */
 .myDefaultClass {
     position: absolute;
-    margin: 0;
+    margin: 0px;
     padding: 0px;
     text-align: center;
 }
@@ -384,25 +390,3 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     -webkit-font-smoothing: antialiased;
 }
 /* end of: mystuff */
-
-#selector {
-    position: absolute;
-    left: 30vw;
-    top: 800px;
-    width: 200px;
-    height: 20px;
-}
-
-.myTooltip {
-    position: absolute;
-    width: 170px;
-    height: 40px;
-    font: 12px sans-serif;
-    font-weight: bold;
-    background: lightsteelblue;
-    border: 0px;
-    border-radius: 5px;
-    pointer-events: none;
-    padding: 5px;
-    margin: 5px;
-}
