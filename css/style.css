@@ -1,12 +1,15 @@
+html {
+    margin: 0 auto;
+}
 head {
-    margin: 0px;
     padding: 0px;
 }
 body {
     background-color: #FFFFFF;
     font-family:'Raleway', 'Open Sans', sans-serif;
-    margin: 0px;
+    margin: 0 auto;
     padding: 0px;
+    height: 100vh;
 }
 p {
     margin: 5px 0;
@@ -282,7 +285,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     text-align: center;
     z-index: 1;
 }
-#menuButtons {
+#view-menu-buttons {
     margin: 0px;
     padding: 0px;
 }
@@ -315,32 +318,31 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 #third-amount-interval {
     left: 45vw;
 }
-#view-donors-name {
-    position: absolute;
-    margin: 0px;
-    padding: 0px;
-    top: -40px;
-    left: 83px;
-}
-#view-donor-image-history-bar {
-    position: absolute;
-    margin: 0px;
-    padding: 3px;
-    left: 33vw;
-    top: -70px;
-    height: 50px;
-    width: 500px;
-    border: 3px solid rgba(50, 10, 0, 0.7);
-    box-shadow: 0px -3px 10px rgba(20, 20, 20, 0.7);
-    background-color: #FFFFFF;
-    display: inline;
-}
 #view-go-to-top {
     width: auto;
     height: auto;
     text-align: center;
-    right: -27vw;
+    right: -23vw;
     top: 10px;
+}
+#view-donors-name {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    left: 153px;
+    top: -40px;
+}
+#view-donor-image-history-bar {
+    position: absolute;
+    margin: 0px;
+    left: 27%;
+    top: -80px;
+    height: 64px;
+    width: 650px;
+    border: 3px solid rgba(50, 10, 0, 0.7);
+    box-shadow: 0px -3px 10px rgba(20, 20, 20, 0.7);
+    background-color: #FFFFFF;
+    display: inline;
 }
 #view-footer {
     position: absolute;
@@ -349,7 +351,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     height: auto;
     width: 100vw;
     background-color: rgba(204,255,204,0.85);
-    top: 1000px;
+    top: 1100px;
 }
 
 /* my classes */
