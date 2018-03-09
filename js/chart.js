@@ -4,6 +4,7 @@ var w = 1000, h = 800;  //svg size for circles
 var nodes = [];
 
 var svg = d3.select("#chart").append("svg").attr("id", "svg").attr("width", w).attr("height", h);
+d3.select("svg").style("position", "absolute").style("top", "7em").style("left", "1em");
 var tooltip = d3.select("body").append("div").attr("id", "tooltip").attr("class", "tooltip");
 var radius = d3.scale.sqrt().range([10, 20]);
 var fill = d3.scale.ordinal().range(["#CC0066", "#00CC66", "#00FFCC"]); //circles colors (purple-green-cyan)
@@ -22,7 +23,7 @@ $(document).ready(function () {
         var id = d3.select(this).attr("id");
         return transition(id);
     });
-    return d3.csv("assets/data/7500up.csv", display);
+    return d3.csv("assets/data/temp/7500up.csv", display);
 });
 /* ----- end of: event handler ----- */
 

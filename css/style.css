@@ -7,9 +7,9 @@ head {
 body {
     background-color: #FFFFFF;
     font-family:'Raleway', 'Open Sans', sans-serif;
-    margin: 0 auto;
     padding: 0px;
-    height: 100vh;
+    width: 100em;
+    height: auto;
 }
 p {
     margin: 5px 0;
@@ -31,7 +31,8 @@ li {
 /* Information boxes for different chart layouts */
 /* Positioning */
 #initial-content, #a, #b, #c, #d, #e, #f, #view-party-type, #view-donor-type, #view-source-type, #partyInfo, #conservative, #labour, #libdem, #individual, #company, #union, #society, #other, #public-or-private-money, #public-or-private-money-split, #private-money, #public-money { 
-    position: absolute; 
+    position: absolute;
+    z-index: 1;
 }
 
 /* Initial appearance on load */
@@ -41,6 +42,7 @@ li {
 
 /* View containers (text)*/
 #initial-content, #view-source-type {
+    top: 8em;
     left: 45vw;
     width: 500px;
 }
@@ -75,6 +77,7 @@ li {
 
 /* Party view */
 #conservative, #labour, #libdem {
+    top: 8em;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
@@ -95,6 +98,9 @@ li {
 /* end of: Party view */
 
 /* Donor type layout */
+#view-donor-type, #individual, #company, #union, #society, #other {
+    
+}
 #view-donor-type {
     height: 100%;
     left: 32vw;
@@ -123,7 +129,7 @@ li {
 #other {
     top: 470px;
     text-align: right;
-    right: 0
+    right: 0;
 }
 /* end of: Donor type layout */
 
@@ -145,6 +151,7 @@ li {
     height: auto;
 }
 #chart {
+    position: absolute;
     width: auto;
     height: auto;
 }
@@ -275,24 +282,29 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 /*****my stuff ******/
 /* my ids */
 #view-header {
+    position: absolute;
     margin: 0px;
-    padding: 10px;
-    top: 0px;
+    padding: 0px;
+    top: 0em;
+    left: 0em;
     height: 97px;
-    position: inherit;
-    width: 100vw;
+    width: 100em;
     background-color: rgba(204,255,204,0.85);
     text-align: center;
     z-index: 1;
 }
 #view-menu-buttons {
+    position: absolute;
+    text-align: center;
     margin: 0px;
     padding: 0px;
+    top: 4em;
+    left: 19em;
 }
 #view-history-bar-button {
     position: absolute;
-    right: 5vw;
-    top: 80px;
+    right: -16em;
+    top: 0em;
 }
 #view-by-amount-of-donation {
     display: none; /* page on load */
@@ -303,39 +315,43 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 #view-by-amount-of-donation-title {
     position: absolute;
     width: 500px;
-    left: 16vw;
+    left: 17em;
+    top: 7em;
+    z-index: 1;
 }
 #first-amount-interval, #second-amount-interval, #third-amount-interval {
     position: absolute;
-    top: 520px;
+    top: 41em;
+    z-index: 1;
 }
 #first-amount-interval {
-    left: 10vw;
+    left: 10em;
 }
 #second-amount-interval {
-    left: 26vw;
+    left: 27em;
 }
 #third-amount-interval {
-    left: 45vw;
+    left: 47em;
 }
 #view-go-to-top {
+    position: absolute;
     width: auto;
     height: auto;
     text-align: center;
-    right: -23vw;
-    top: 10px;
+    right: -25em;
+    top: 1em;
 }
 #view-donors-name {
     position: absolute;
     margin: 0px;
     padding: 0px;
     left: 153px;
-    top: -40px;
+    top: -3.1em;
 }
 #view-donor-image-history-bar {
     position: absolute;
     margin: 0px;
-    left: 27%;
+    left: 27em;
     top: -80px;
     height: 64px;
     width: 650px;
@@ -347,11 +363,12 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 #view-footer {
     position: absolute;
     margin: 0px;
-    padding: 10px;
-    height: auto;
-    width: 100vw;
+    padding: 5px;
+    top: 75em;
+    height: 4em;
+    width: 100em;
+    left: 0em;
     background-color: rgba(204,255,204,0.85);
-    top: 1100px;
 }
 
 /* my classes */
