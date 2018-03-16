@@ -21,15 +21,15 @@ function mouseoverCircle(d) {
         .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius + 150)) + offset.top) - 13) + "px")
         .style("z-index", 2).html(infoBox).style("display", "block");
 
-    //responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
-    addImagesToHistoryBar(imagePath, d, amount);
+    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+    //addImagesToHistoryBar(imagePath, d, amount);
 }
 
 function mouseoutCircle() {
     /* no more tooltips */
     d3.select(this).classed("active", false);
     d3.select(".tooltip").style("display", "none"); /* */
-    //responsiveVoice.cancel();
+    responsiveVoice.cancel();
 }
 
 function clickCircle(d) {
@@ -80,12 +80,12 @@ function addImagesToHistoryBar(imagePath, d, amount) {
         //                .style("top", (d3.event.pageY - 28) + "px")
         //                .style("opacity", 0.9);
 
-        //responsiveVoice.speak(":" + d.donor + ": with total value :" + comma(amount) + " pounds");
+        responsiveVoice.speak(":" + d.donor + ": with total value :" + comma(amount) + " pounds");
     };
     imgNode.onmouseout = function () {
         //tooltip.style("opacity", 0);
         donorsNameElement.innerHTML = "";
-        //responsiveVoice.cancel();
+        responsiveVoice.cancel();
     };
     newImgElement.appendChild(imgNode);
 
