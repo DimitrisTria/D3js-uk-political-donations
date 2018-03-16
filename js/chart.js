@@ -23,7 +23,7 @@ $(document).ready(function () {
         var id = d3.select(this).attr("id");
         return transition(id);
     });
-    return d3.csv("assets/data/temp/7500up.csv", display);
+    return d3.csv("assets/data/7500up.csv", display);
 });
 /* ----- end of: event handler ----- */
 
@@ -169,7 +169,7 @@ function mouseoverCircle(d) {
             .style("z-index", 2).html(infoBox).style("display", "block");
 
     responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
-    addImagesToHistoryBar(imagePath, d, amount);
+    //addImagesToHistoryBar(imagePath, d, amount);
 }
 
 function mouseoutCircle() {
