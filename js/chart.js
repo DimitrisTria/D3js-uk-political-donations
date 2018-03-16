@@ -151,7 +151,7 @@ var amount, offset, imagePath, infoBox;
 
 function mouseoverCircle(d) {
     // tooltip popup
-    imagePath = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
+    imagePath = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + d.donor + ".ico";
     amount = d3.select(this).attr("amount");
     offset = $("svg").offset();
     d3.select(this).classed("active", true);
