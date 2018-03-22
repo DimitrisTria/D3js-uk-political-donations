@@ -58,9 +58,9 @@
             <li>
                 <a href="#" role="button" id="group-by-donor-amount" class="pure-button switch" onmousedown="menuButtonSound.play();">Split by amount of donation</a>
             </li>
-            <!-- <li>
+            <li>
                 <a href="#view-donor-image-history-bar" role="button" id="view-history-bar-button" class="myButton" onmousedown="menuButtonSound.play();">History Bar</a>
-            </li> -->
+            </li>
         </nav>
     </div>
 
@@ -236,22 +236,20 @@
 
     <div id="chart">
         <svg id="svg"></svg>
-        <!--
-        <svg id="mysvg">
-            <g> <circle cx="100" cy="100" r="15"></circle> </g>
-        </svg>
-        -->
+        <svg id="mysvg"></svg>
     </div>
 
     <div id="view-footer">
-        <!-- history bar
+        <!-- history bar -->
         <div id="view-donor-image-history-bar">
             <div id="view-donors-name"></div>
             <a href="#" role="button" id="view-go-to-top" class="myDefaultClass myButton" onmousedown="menuButtonSound.play();">Go to top</a>
         </div>
-        end of: history bar -->
+        <!--end of: history bar-->
 
-        <p> My github profile: <a href="https://github.com/DimitrisTria/">DimitrisTria</a> </p>
+        <p> My github profile:
+            <a href="https://github.com/DimitrisTria/">DimitrisTria</a>
+        </p>
         <p> Original:
             <a href="https://github.com/ioniodi/D3js-uk-political-donations">https://github.com/ioniodi/D3js-uk-political-donations</a>
         </p>
@@ -262,7 +260,7 @@
     <script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
     <script src='js/libs/responsivevoice.js'></script>
     <script src="js/chart.js"></script>
-    <script src="js/chart_physics.js"></script>
+    <script src="js/chart_groups.js"></script>
     <script src="js/chart_interacting.js"></script>
 </body>
 
