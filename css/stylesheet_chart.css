@@ -55,8 +55,8 @@ circle.active {
 /* ****** mysvg ****** */
 svg#mysvg {
     position: absolute;
-    right: 1em;
-    top: 24.65em;
+    left: 1em;
+    top: 55em;
     margin-left: auto;
     margin-right: auto;
     display: block;

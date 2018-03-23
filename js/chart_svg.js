@@ -91,8 +91,8 @@ d3.csv("assets/data/7500up.csv", function (error, data) {
 
 // margins, width and height of mysvg
 var margin = { top: 20, right: 10, bottom: 100, left: 50 };
-var width = 470 - margin.right - margin.left;
-var height = 370 - margin.top - margin.bottom;
+var width = 1000 - margin.right - margin.left;
+var height = 470 - margin.top - margin.bottom;
 
 // define x and y scales
 var xScale = d3.scale.ordinal().rangeRoundBands([0, width], 0.2, 0.2);
