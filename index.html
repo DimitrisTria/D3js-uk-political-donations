@@ -14,7 +14,9 @@
     <meta property="og:image:height" content="200" />
 
     <!-- css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/stylesheet_anotations.css">
+    <link rel="stylesheet" href="css/stylesheet_chart.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700">
     <!-- end of: css -->
 
@@ -31,35 +33,27 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
-
-        var menuButtonSound = new Audio();
-        menuButtonSound.src = "assets/sounds/buttonSound.wav";
     </script>
 </head>
-<!-- Add feature detection and noscript -->
 
 <body>
     <div id="view-header">
         <h1>Who's funding the big three?</h1>
-
         <nav role="navigation" id="view-menu-buttons">
-            <li>
+            <li class="menu-buttons">
                 <a href="#" role="button" id="all-donations" class="pure-button switch" onmousedown="menuButtonSound.play();">All money</a>
             </li>
-            <li>
+            <li class="menu-buttons">
                 <a href="#" role="button" id="group-by-money-source" class="pure-button switch" onmousedown="menuButtonSound.play();">The public's purse</a>
             </li>
-            <li>
+            <li class="menu-buttons">
                 <a href="#" role="button" id="group-by-party" class="pure-button switch" onmousedown="menuButtonSound.play();">Split private by party</a>
             </li>
-            <li>
+            <li class="menu-buttons">
                 <a href="#" role="button" id="group-by-donor-type" class="pure-button switch" onmousedown="menuButtonSound.play();">Split private by type of donor</a>
             </li>
-            <li>
+            <li class="menu-buttons">
                 <a href="#" role="button" id="group-by-donor-amount" class="pure-button switch" onmousedown="menuButtonSound.play();">Split by amount of donation</a>
-            </li>
-            <li>
-                <a href="#view-donor-image-history-bar" role="button" id="view-history-bar-button" class="myButton" onmousedown="menuButtonSound.play();">History Bar</a>
             </li>
         </nav>
     </div>
@@ -243,7 +237,6 @@
         <!-- history bar -->
         <div id="view-donor-image-history-bar">
             <div id="view-donors-name"></div>
-            <a href="#" role="button" id="view-go-to-top" class="myDefaultClass myButton" onmousedown="menuButtonSound.play();">Go to top</a>
         </div>
         <!--end of: history bar-->
 
@@ -259,7 +252,9 @@
     <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>');</script>
     <script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
     <script src='js/libs/responsivevoice.js'></script>
-    <script src="js/chart.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/chart_svg.js"></script>
     <script src="js/chart_groups.js"></script>
     <script src="js/chart_interacting.js"></script>
 </body>

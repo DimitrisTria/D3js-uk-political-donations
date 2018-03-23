@@ -1,5 +1,3 @@
-/* global d3, w, h, nodes, radius, dataset, df_list */
-
 /* ****** svg ****** */
 var padding = 2;    //?
 var force, node, data, maxVal;
@@ -279,6 +277,7 @@ function moveByAmount(alpha) {
 /* ----- end of mode: split by donor amount ----- */
 /* ****** end of: svg ****** */
 
+
 /* ****** mysvg ****** */
 function calcDonorFreqByCategory(dataset) {
     var grp1_lst = [], grp2_lst = [], grp3_lst = [], grp4_lst = [], grp5_lst = [];
@@ -328,7 +327,7 @@ function grp2_pd(dataset) {
             c2 = c2 + 1;
         }
     }
-    list = [["pub", c1], ["priv", c2]];
+    list = [ ["private", c1], ["public", c2] ];
     return list;
 }
 

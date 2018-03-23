@@ -1,4 +1,3 @@
-
 /* ----- Mouse events (on circles)  ----- */
 var amount, offset, imagePath, infoBox;
 
@@ -21,7 +20,7 @@ function mouseoverCircle(d) {
         .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius + 150)) + offset.top) - 13) + "px")
         .style("z-index", 2).html(infoBox).style("display", "block");
 
-    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+    // responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
     addImagesToHistoryBar(d, imagePath, amount);
 }
 
@@ -29,7 +28,7 @@ function mouseoutCircle() {
     /* no more tooltips */
     d3.select(this).classed("active", false);
     d3.select(".tooltip").style("display", "none"); /* */
-    responsiveVoice.cancel();
+    // responsiveVoice.cancel();
 }
 
 function clickCircle(d) {
@@ -48,10 +47,8 @@ var sizeOfImageHistoryBar = 10;
 var imageHistoryBarCounter = 0;
 var donorsNameElement = document.getElementById("view-donors-name");
 var listOfImageHistoryBarElement = document.getElementById("view-donor-image-history-bar");
-// var newPElement = document.createElement("P");
-// var newAElement = document.createElement("A");
 var newImgElement = document.createElement("IMG");
-var newDColor = { "#F02233":"#CC0066", "#087FBD":"#00CC66", "#FDBB30":"#00FFCC" };
+var newDColor = { "#F02233": "#CC0066", "#087FBD": "#00CC66", "#FDBB30": "#00FFCC" };
 
 function addImagesToHistoryBar(d, imagePath, amount) {
     var imgNode = new Image(50, 50);
@@ -64,11 +61,11 @@ function addImagesToHistoryBar(d, imagePath, amount) {
     imgNode.onmouseover = function () {
         donorsNameElement.innerHTML = "<p class='myDefaultClass' style='color:" + newDColor[d.color] + "; border:2px solid black; \n\
                                           background-color:#ffffcc; width:350px; text-allign:center;'>" + d.donor + "</p>";
-        responsiveVoice.speak(":" + d.donor + ": with total value :" + comma(amount) + " pounds");
+        // responsiveVoice.speak(":" + d.donor + ": with total value :" + comma(amount) + " pounds");
     };
     imgNode.onmouseout = function () {
         donorsNameElement.innerHTML = "";
-        responsiveVoice.cancel();
+        // responsiveVoice.cancel();
     };
     newImgElement.appendChild(imgNode);
 
