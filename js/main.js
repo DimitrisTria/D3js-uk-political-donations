@@ -1,24 +1,19 @@
 //initial content
-var mode = "mode_svg1_d3";
-var group = "all-donations";
+var currentMode = "mode_svg1_d3";
+var currentGroup = "all-donations";
 
 var previewsMode = "";
 var previewsGroup = "";
 
-// on first page load
-$(document).ready(function () {
-    return d3.csv("assets/data/7500up.csv", circlesChartDisplay);
-});
-
 // mode selection
 $(document).ready(function () {
     d3.selectAll(".mode").on("click", function () {
-        mode = d3.select(this).attr("id");
+        currentMode = d3.select(this).attr("id");
         modeButtonSound.play();
-        if (mode != previewsMode) {
-            previewsMode = mode;
-            
-            return switchMode(mode, group);
+        if (currentMode != previewsMode) {
+            groupFocus(currentGroup,previewsGroup);
+            previewsMode = currentMode;
+            return tab(currentMode, currentGroup);
         }
     });
 });
@@ -26,11 +21,12 @@ $(document).ready(function () {
 // group selection
 $(document).ready(function () {
     d3.selectAll(".group").on("click", function () {
-        group = d3.select(this).attr("id");
+        currentGroup = d3.select(this).attr("id");
         groupButtonSound.play();
-        if (previewsGroup != group) {
-            previewsGroup = group;
-            return switchMode(mode, group);
+        if (previewsGroup != currentGroup) {
+            groupFocus(currentGroup,previewsGroup);
+            previewsGroup = currentGroup;
+            return tab(currentMode, currentGroup);
         }
     });
 });
@@ -41,7 +37,9 @@ var mode_dct = {
     "mode_svg1_stats_d3": transition_svg1_stats
 };
 
-function switchMode(mode, group) {
+var group_lst = ["all-donations","group-by-money-source","group-by-party","group-by-donor-type","group-by-donor-amount"];
+
+function tab(mode, group) {
     mode_dct[mode](group);
 }
 
@@ -96,6 +94,6 @@ function transition_svg2(group) {
 
 function transition_svg1_stats(group) {
     $("#view-history-bar").fadeOut(250);
-    d3.select("#svg1_stats_d3").selectAll("*").remove();
+    d3.select("#svg1_stats_d3").selectAll("*").remove(); // :)
     barChartDisplay(group);
 }

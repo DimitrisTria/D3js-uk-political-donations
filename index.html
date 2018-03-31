@@ -36,6 +36,8 @@
         })();
     </script>
     <!-- end of: analytics -->
+
+    <script src="js/chart_stats.js"></script>
 </head>
 
 <body>
@@ -241,9 +243,9 @@
     </div>
 
     <div id="tabbuttons">
-        <button id="mode_svg1_d3" class="tablink mode" onclick="changeTab('view_svg1_d3', this, 'rgba(255, 0, 0, 0.3)')">view1</button>
-        <button id="mode_svg2_d3" class="tablink mode" onclick="changeTab('view_svg2_d3', this, 'rgba(0, 255, 0, 0.3)')">view2</button>
-        <button id="mode_svg1_stats_d3" class="tablink mode" onclick="changeTab('view_svg1_stats_d3', this, 'rgba(0, 0, 255, 0.3)')">statistics</button>
+        <button id="mode_svg1_d3" class="tablink mode" onclick="modeFocus('view_svg1_d3', this, 'rgba(255, 0, 0, 0.3)')">view1</button>
+        <button id="mode_svg2_d3" class="tablink mode" onclick="modeFocus('view_svg2_d3', this, 'rgba(0, 255, 0, 0.3)')">view2</button>
+        <button id="mode_svg1_stats_d3" class="tablink mode" onclick="modeFocus('view_svg1_stats_d3', this, 'rgba(0, 0, 255, 0.3)')">statistics</button>
     </div>
 
     <!-- history bar -->
@@ -265,11 +267,10 @@
     <script src='js/libs/responsivevoice.js'></script>
 
     <script src="js/main.js"></script>
-    <script src="js/chart_stats.js"></script>
+    <script src="js/interacting.js"></script>
     <script src="js/chart.js"></script>
     <script src="js/chart_groups.js"></script>
     <script src="js/chart_interacting.js"></script>
-    <script src="js/other.js"></script>
 </body>
 
 </html>

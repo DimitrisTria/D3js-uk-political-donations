@@ -1,3 +1,11 @@
+/* on page load */
+document.getElementById(currentMode).click();
+groupFocus(currentGroup, previewsGroup);
+$(document).ready(function () {
+    return d3.csv("assets/data/7500up.csv", circlesChartDisplay);
+});
+/* end of: on page load */
+
 /* ****** svg1_d3 ****** */
 var w = 1000, h = 800;
 var nodes = [];
@@ -198,29 +206,5 @@ function barChartDisplay(eventName) {
 
 
 /* ****** svg2_d3 ****** */
-// d3.select("#view-first-d3").transition(10000).style("background-color","black");
-
 var svg2 = d3.select("#svg2");
-
 /* ****** end of: svg2_d3 ****** */
-
-/* new */
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("mode_svg1_d3").click();
-
-function changeTab(modeByElmnt, elmnt, color) {
-    var tabcontent = document.getElementsByClassName("tabcontent");
-    for (var i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    var tablinks = document.getElementsByClassName("tablink");
-    for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-    }
-
-    document.getElementById(modeByElmnt).style.display = "block";
-
-    elmnt.style.backgroundColor = color;
-}
-/* end of new */

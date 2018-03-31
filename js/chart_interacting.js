@@ -1,4 +1,4 @@
-/* ----- Mouse events (on circles)  ----- */
+/* ****** svg1_d3 ****** */
 var amount, offset, imagePath, infoBox;
 
 function mouseoverCircle(d) {
@@ -34,52 +34,4 @@ function mouseoutCircle() {
 function clickCircle(d) {
     googleSearch(d.donor);
 }
-/* ----- end of: Mouse events (on circles) ----- */
-
-/* search with google */
-function googleSearch(itemToSearch) {
-    window.open('http://google.com/search?q=' + itemToSearch);
-}
-/* end of: search with google */
-
-/* image history bar */
-var sizeOfHistoryBar = 8;
-var historyBarItemsCounter = 0;
-var historyBarElement = document.getElementById("view-history-bar");
-var newImgElement = document.createElement("IMG");
-var newDColor = { "#F02233": "#CC0066", "#087FBD": "#00CC66", "#FDBB30": "#00FFCC" };
-var histTooltip = d3.select("body").append("div").attr("id", "histTooltip");
-
-function updateHistoryBar(d, imagePath, amount) {
-    var imgNode = new Image(50, 50);
-    imgNode.src = imagePath;
-    imgNode.style.margin = "3px";
-    imgNode.style.border = "2px solid black";
-    imgNode.style.borderRadius = "4px";
-    imgNode.onclick = function () {
-        googleSearch(d.donor);
-    };
-    imgNode.onmouseover = function (event) {
-        var pageX = event.clientX;
-        var pageY = event.clientY;
-        d3.select("#histTooltip")
-            .style("opacity", 0.9)
-            .html(d.donor)
-            .style("left", pageX-170 +"px")
-            .style("top", pageY +"px");
-        // responsiveVoice.speak(":" + d.donor + ": with total value :" + comma(amount) + " pounds");
-    };
-    imgNode.onmouseout = function () {
-        d3.select("#histTooltip").style("opacity", 0);
-        // responsiveVoice.cancel();
-    };
-    newImgElement.appendChild(imgNode);
-
-    if (historyBarItemsCounter >= sizeOfHistoryBar) {
-        historyBarElement.removeChild(historyBarElement.childNodes[sizeOfHistoryBar - 1]); //remove last image
-    } else {
-        historyBarItemsCounter = historyBarItemsCounter + 1;
-    }
-    historyBarElement.insertBefore(imgNode, historyBarElement.childNodes[0]); //append new image
-}
-/* end of: image history bar */
+/* ****** end of: svg1_d3 ****** */
