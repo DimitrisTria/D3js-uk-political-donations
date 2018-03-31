@@ -1,5 +1,6 @@
 /* Information boxes for different chart layouts */
 div#annotations {
+    position: absolute;
     z-index: 2;
 }
 /* Initial appearance on load */
