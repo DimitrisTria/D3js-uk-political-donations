@@ -15,8 +15,8 @@
 
     <!-- css -->
     <link rel="stylesheet" href="css/stylesheet.css">
-    <link rel="stylesheet" href="css/stylesheet_annotations.css">
-    <link rel="stylesheet" href="css/stylesheet_chart.css">
+    <link rel="stylesheet" href="css/chart1_annotations.css">
+    <link rel="stylesheet" href="css/charts.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700">
     <!-- end of: css -->
 
@@ -37,7 +37,7 @@
     </script>
     <!-- end of: analytics -->
 
-    <script src="js/chart_stats.js"></script>
+    <script src="js/stats.js"></script>
 </head>
 
 <body>
@@ -62,7 +62,7 @@
         </nav>
     </div>
 
-    <div id="view_svg1_d3" class="tabcontent">
+    <div id="view_chart1_d3" class="tabcontent">
         <!-- annotations -->
         <div id="annotations">
             <!-- Initial annotations -->
@@ -231,21 +231,21 @@
         </div>
         <!-- end of: annotations -->
 
-        <svg id="svg1_d3"></svg>
+        <svg id="chart1_d3"></svg>
     </div>
 
-    <div id="view_svg2_d3" class="tabcontent">
-        <svg id="svg2_d3"></svg>
+    <div id="view_chart2_d3" class="tabcontent">
+        <svg id="chart2_d3"></svg>
     </div>
 
-    <div id="view_svg1_stats_d3" class="tabcontent">
-        <svg id="svg1_stats_d3"></svg>
+    <div id="view_stats_charts_d3" class="tabcontent">
+        <svg id="stats_chart1_d3"></svg>
     </div>
 
-    <div id="tabbuttons">
-        <button id="mode_svg1_d3" class="tablink mode" onclick="modeFocus('view_svg1_d3', this, 'rgba(255, 0, 0, 0.3)')">view1</button>
-        <button id="mode_svg2_d3" class="tablink mode" onclick="modeFocus('view_svg2_d3', this, 'rgba(0, 255, 0, 0.3)')">view2</button>
-        <button id="mode_svg1_stats_d3" class="tablink mode" onclick="modeFocus('view_svg1_stats_d3', this, 'rgba(0, 0, 255, 0.3)')">statistics</button>
+    <div id="view-mode-buttons">
+        <button id="mode_chart1_d3" class="tablink mode" onclick="modeFocus('view_chart1_d3', this, 'rgba(255, 0, 0, 0.3)')">view1</button>
+        <button id="mode_chart2_d3" class="tablink mode" onclick="modeFocus('view_chart2_d3', this, 'rgba(0, 255, 0, 0.3)')">view2</button>
+        <button id="mode_stats_charts_d3" class="tablink mode" onclick="modeFocus('view_stats_charts_d3', this, 'rgba(0, 0, 255, 0.3)')">statistics</button>
     </div>
 
     <!-- history bar -->
@@ -267,10 +267,10 @@
     <script src='js/libs/responsivevoice.js'></script>
 
     <script src="js/main.js"></script>
-    <script src="js/other.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/chart_groups.js"></script>
-    <script src="js/chart_interacting.js"></script>
+    <script src="js/interacting.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/charts_interacting.js"></script>
+    <script src="js/charts_groups.js"></script>
 </body>
 
 </html>

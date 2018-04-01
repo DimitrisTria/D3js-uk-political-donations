@@ -48,32 +48,20 @@ a.group {
     position: relative;
 }
 
-/* new */
-div#view_svg1_d3, div#view_svg2_d3, div#view_svg1_stats_d3 {
+div#view_chart1_d3, div#view_chart2_d3, div#view_stats_charts_d3 {
     position: relative;
     width: 100%;
     left: 0%;
 }
-div#view_svg1_d3 {background-color:rgba(255, 0, 0, 0.2);}
-div#view_svg2_d3 {background-color:rgba(0, 255, 0, 0.2);}
-div#view_svg1_stats_d3 {background-color:rgba(0, 0, 255, 0.2);}
+div#view_chart1_d3 {background-color:rgba(255, 0, 0, 0.2);}
+div#view_chart2_d3 {background-color:rgba(0, 255, 0, 0.2);}
+div#view_stats_charts_d3 {background-color:rgba(0, 0, 255, 0.2);}
 
-div#tabbuttons {
+div#view-mode-buttons {
     position: absolute;
     height: auto;
     left: 0em;
     top: 3.2em;
-}
-a.mode {
-    position: absolute;
-}
-div#view_svg1_d3.tabcontent, div#view_svg2_d3.tabcontent, div#view_svg1_stats_d3.tabcontent {
-    position: relative;
-    display: none;
-    width: 100%;
-    height: 55em;
-    top: 6.5em;
-    padding: auto;
 }
 button.tablink {
     padding: 14px;
@@ -88,7 +76,17 @@ button.tablink {
 button.tablink:hover {
     background-color: #777;
 }
-/* end of: new */
+a.mode {
+    position: absolute;
+}
+div#view_chart1_d3.tabcontent, div#view_chart2_d3.tabcontent, div#view_stats_charts_d3.tabcontent {
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 55em;
+    top: 6.5em;
+    padding: auto;
+}
 
 div#histTooltip {
     position: fixed;

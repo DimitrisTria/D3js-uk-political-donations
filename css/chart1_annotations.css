@@ -1,0 +1,144 @@
+/* Information boxes for different chart layouts */
+div#annotations {
+    position: absolute;
+    z-index: 2;
+}
+/* Initial appearance on load */
+div#view-source-type, div#view-party-type, div#view-donor-type, div#view-by-amount {
+    display: none;
+    position: absolute;
+}
+
+/* all money */
+div#initial-content, #a, #b, #c, #d, #e, #f {
+    position: absolute;
+}
+div#initial-content {
+    top: 1em;
+    left: 45em;
+    width: 500px;
+}
+/* div#ic1, div#ic2 {
+    z-index: 1;
+} */
+div#a, div#b, div#c, div#d, div#e {
+    left: -55em;
+    opacity: 0.5;
+    font-size: 0.75em;
+}
+div#a { top: 450px; }
+div#b { top: 405px; }
+div#c { top: 350px; }
+div#d { top: 305px; }
+div#e { top: 250px; }
+div#f {
+    left: -8em;
+    top: 463px;
+    opacity: 0.7;
+    font-size: 0.75em;
+}
+/* end of: all money*/
+
+/* Public or private funds view */
+div#view-source-type {
+    top: 1em;
+    left: 45em;
+    width: 500px;
+}
+div#public-or-private-money, div#public-or-private-money-split, div#private-money, div#public-money {
+    position: absolute;
+}
+div#public-or-private-money {
+    max-width: 300px;
+}
+div#public-or-private-money-split {
+    left: -600px;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+div#private-money, div#public-money {
+    width: 150px;
+    height: 125px;
+    top: 527px;
+}
+div#private-money { left: 13em; }
+div#public-money { left: 43em; }
+/* end of: Public or private funds view */
+
+/* Party view */
+#view-party-type {
+    position: absolute;
+    width: 272px;
+    left: 45em;
+    top: 1em;
+}
+#party-type-title,#conservative, #labour, #libdem {
+    position: absolute;
+}
+#conservative, #labour, #libdem {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#conservative {
+    background: rgba(0, 255, 0, 0.7);
+    top: 7em;
+}
+#labour {
+    background: rgba(255, 0, 255, 0.7);
+    top: 22.5em;
+}
+#libdem {
+    background: rgba(0, 255, 255, 0.7);
+    top: 38em;
+}
+/* end of: Party view */
+
+/* Donor type layout */
+#view-donor-type, #individual, #company, #union, #society, #other {
+    top: 0.8em;
+}
+div#view-donor-type {
+    width: 370px;
+    height: 100%;
+    left: 33em;
+}
+#conservative, #labour, #libdem, #individual, #company, #union, #society, #other { 
+    position: absolute;
+}
+#individual, #company, #union {
+    left: 0em;
+    text-align: left;
+}
+#individual { top: 70px; }
+#company { top: 360px; }
+#union { top: 580px; }
+#society, #other{
+    right: 0em;
+    text-align: right;
+}
+#society { top: 205px; }
+#other { top: 470px; }
+/* end of: Donor type layout */
+
+/* Split by amount of donation */
+div#view-by-amount {
+    position: absolute;
+    text-align: center;
+    top: 1em;
+}
+div#view-by-amount-title {
+    position: absolute;
+    width: 500px;
+    left: 17em;
+}
+div#first-amount-interval, div#second-amount-interval, div#third-amount-interval {
+    position: absolute;
+    top: 34em;
+}
+div#first-amount-interval { left: 10em; }
+div#second-amount-interval { left: 27em; }
+div#third-amount-interval { left: 47em; }
+/* end of: Split by amount of donation */

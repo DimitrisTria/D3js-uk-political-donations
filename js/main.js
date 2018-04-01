@@ -1,7 +1,9 @@
-//initial content
-var currentMode = "mode_svg1_d3";
-var currentGroup = "all-donations";
+var mode_lst = ["mode_chart1_d3", "mode_chart2_d3", "mode_stats_charts_d3"];
+var group_lst = ["all-donations", "group-by-money-source", "group-by-party", "group-by-donor-type", "group-by-donor-amount"];
 
+//initial content
+var currentMode = mode_lst[0];
+var currentGroup = group_lst[0];
 var previewsMode = "";
 var previewsGroup = "";
 
@@ -11,9 +13,8 @@ $(document).ready(function () {
         currentMode = d3.select(this).attr("id");
         modeButtonSound.play();
         if (currentMode != previewsMode) {
-            groupFocus(currentGroup,previewsGroup);
             previewsMode = currentMode;
-            return tab(currentMode, currentGroup);
+            return evnt(currentMode, currentGroup);
         }
     });
 });
@@ -24,27 +25,30 @@ $(document).ready(function () {
         currentGroup = d3.select(this).attr("id");
         groupButtonSound.play();
         if (previewsGroup != currentGroup) {
-            groupFocus(currentGroup,previewsGroup);
+            groupFocus(currentGroup, previewsGroup);
             previewsGroup = currentGroup;
-            return tab(currentMode, currentGroup);
+            return evnt(currentMode, currentGroup);
         }
     });
 });
 
 var mode_dct = {
-    "mode_svg1_d3": transition_svg1,
-    "mode_svg2_d3": transition_svg2,
-    "mode_svg1_stats_d3": transition_svg1_stats
+    "mode_chart1_d3": transition_chart1_d3,
+    "mode_chart2_d3": transition_chart2_d3,
+    "mode_stats_charts_d3": transition_stats_charts
 };
 
-var group_lst = ["all-donations","group-by-money-source","group-by-party","group-by-donor-type","group-by-donor-amount"];
-
-function tab(mode, group) {
+function evnt(mode, group) {
+    if (mode == mode_lst[0] || mode == mode_lst[1]) {
+        $("#view-history-bar").fadeIn(1000);
+    }
+    else {
+        $("#view-history-bar").fadeOut(250);
+    }
     mode_dct[mode](group);
 }
 
-function transition_svg1(group) {
-    $("#view-history-bar").fadeIn(1000);
+function transition_chart1_d3(group) {
     if (group === "all-donations") {
         $("#initial-content").fadeIn(1000);
         $("#view-donor-type").fadeOut(250);
@@ -87,13 +91,11 @@ function transition_svg1(group) {
     }
 }
 
-function transition_svg2(group) {
-    $("#view-history-bar").fadeIn(1000);
-    console.log("-" + mode);
+function transition_chart2_d3(group) {
+    console.log("-" + currentMode);
 }
 
-function transition_svg1_stats(group) {
-    $("#view-history-bar").fadeOut(250);
-    d3.select("#svg1_stats_d3").selectAll("*").remove(); // :)
+function transition_stats_charts(group) {
+    d3.select("#stats_chart1_d3").selectAll("*").remove(); // :)
     barChartDisplay(group);
 }
