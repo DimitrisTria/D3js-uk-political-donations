@@ -79,14 +79,14 @@ function grp4_pd(dataset) {
         if (dataset[i].entityname == "Company") {
             c3 = c3 + 1;
         }
-        if (dataset[i].entityname == "Individual") {
+        if (dataset[i].entityname == "Other") {
             c4 = c4 + 1;
         }
         if (dataset[i].entityname == "Trade Union") {
             c5 = c5 + 1;
         }
     }
-    temp_lst = [["Individual", c1], ["Society", c2], ["Company", c3], ["Individual", c4], ["Trade Union", c5]];
+    temp_lst = [["Individuals", c1], ["Societies", c2], ["Companies", c3], ["Others", c4], ["Trade Unions", c5]];
     return temp_lst;
 }
 
