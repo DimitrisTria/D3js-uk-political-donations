@@ -13,7 +13,6 @@ $(document).ready(function () {
         currentMode = d3.select(this).attr("id");
         modeButtonSound.play();
         if (currentMode != previewsMode) {
-            previewsMode = currentMode;
             return evnt(currentMode, currentGroup);
         }
     });
@@ -25,8 +24,7 @@ $(document).ready(function () {
         currentGroup = d3.select(this).attr("id");
         groupButtonSound.play();
         if (previewsGroup != currentGroup) {
-            groupFocus(currentGroup, previewsGroup);
-            previewsGroup = currentGroup;
+            groupFocus(currentGroup, previewsGroup); //marks current group button
             return evnt(currentMode, currentGroup);
         }
     });
@@ -46,6 +44,10 @@ function evnt(mode, group) {
         $("#view-history-bar").fadeOut(250);
     }
     mode_dct[mode](group);
+
+    //update previews values
+    previewsMode = currentMode;
+    previewsGroup = currentGroup;
 }
 
 function transition_chart1_d3(group) {
@@ -96,6 +98,7 @@ function transition_chart2_d3(group) {
 }
 
 function transition_stats_charts(group) {
+    // epeidh den kanw update to d3
     d3.select("#stats_chart1_d3").selectAll("*").remove(); // :)
     barChartDisplay(group);
 }
