@@ -77,12 +77,12 @@ function updateHistoryBar(d, imagePath) {
             .html(d.donor)
             .style("left", pageX-170 +"px")
             .style("top", pageY +"px");
-        responsiveVoice.speak(":" + d.donor + ": with total value :" + d.amount + " pounds");
+        // responsiveVoice.speak(":" + d.donor + ": with total value :" + d.amount + " pounds");
     };
     imgNode.onmouseout = function () {
         imgNode.style.boxShadow = "";
         histTooltip.style("opacity", 0);
-        responsiveVoice.cancel();
+        // responsiveVoice.cancel();
     };
     newImgElement.appendChild(imgNode);
 

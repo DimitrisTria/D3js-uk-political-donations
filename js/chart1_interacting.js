@@ -4,6 +4,7 @@ var chart1Tooltip = d3.select("body").append("div").attr("id", "chart1Tooltip");
 function mouseoverCircle(d) {
     // chart1Tooltip popup
     var imagePath = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + d.donor + ".ico";
+    updateHistoryBar(d, imagePath);
     var amount = d3.select(this).attr("amount");
     var offset = $("svg").offset();
     d3.select(this).classed("active", true);
@@ -20,14 +21,13 @@ function mouseoverCircle(d) {
         .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius + 150)) + offset.top) - 13) + "px")
         .html(infoBox).style("display", "block");
 
-    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
-    updateHistoryBar(d, imagePath);
+    // responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
 }
 
 function mouseoutCircle() {
     /* no more chart1Tooltip */
     d3.select(this).classed("active", false);
-    responsiveVoice.cancel();
+    // responsiveVoice.cancel();
     chart1Tooltip.style("display", "none");
 }
 

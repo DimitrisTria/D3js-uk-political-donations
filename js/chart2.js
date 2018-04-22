@@ -19,13 +19,26 @@ var arc = d3.svg.arc()
     .innerRadius(function (d) { return chart2_radius / 3 * d.depth; })
     .outerRadius(function (d) { return chart2_radius / 3 * (d.depth + 1) - 1; });
 
+function checkForDoubleKeys(keyHist, key) {
+    for (var i = 0; i < keyHist.length; i++) {
+        if (key === keyHist[i]) {
+            key = key + ".";
+        }
+    }
+    return key;
+}
+
+var keyHist = [];
 function key(d) {
     var k = [], p = d;
     while (p.depth) {
         k.push(p.donor);
         p = p.parent;
     }
-    return k.reverse().join(".");
+    var key = k.reverse().join(".");
+    key = checkForDoubleKeys(keyHist, key);
+    keyHist.push(key);
+    return key;
 }
 
 function fill(d) {
@@ -67,8 +80,15 @@ function chart2Display(fileName) {
             .value(function (d) { return d.sum; });
 
         var center = chart2_svg.append("circle")
-            .attr("r", chart2_radius / 3)
-            .on("click", zoomOut);
+            .attr("r", chart2_radius / 3.7)
+            .style("fill", "rgba(100,100,100,0.3)")
+            .on("click", zoomOut)
+            .on("mouseover", function () {
+                d3.select(this).style("fill", "rgba(100,100,100,0.5)");
+            })
+            .on("mouseout", function () {
+                d3.select(this).style("fill", "rgba(100,100,100,0.3)");
+            });
 
         var partitioned_data = partition.nodes(root).slice(1);
 
@@ -82,6 +102,16 @@ function chart2Display(fileName) {
             .on("mouseover", mouseOverArc)
             .on("mousemove", mouseMoveArc)
             .on("mouseout", mouseOutArc);
+
+        var texts = chart2_svg.selectAll("text")
+            .data(partitioned_data)
+            .enter().append("text")
+            .filter(filter_min_arc_size_text)
+            .attr("transform", function (d) { return "rotate(" + computeTextRotation(d) + ")"; })
+            .attr("x", function (d) { return chart2_radius / 3 * d.depth; })
+            .attr("dx", "6") // margin
+            .attr("dy", ".35em") // vertical-align	
+            .text(function (d, i) { return d.donor })
 
         function zoomIn(p) {
             if (p.depth > 1) p = p.parent;
@@ -151,6 +181,19 @@ function chart2Display(fileName) {
                     .style("fill-opacity", 1)
                     .attrTween("d", function (d) { return arcTween.call(this, updateArc(d)); });
             });
+
+            texts = texts.data(new_data, function (d) { return d.key; });
+            texts.exit().remove();
+
+            texts.enter().append("text");
+            texts.style("opacity", 0)
+                .attr("transform", function (d) { return "rotate(" + computeTextRotation(d) + ")"; })
+                .attr("x", function (d) { return chart2_radius / 3 * d.depth; })
+                .attr("dx", "6") // margin
+                .attr("dy", ".35em") // vertical-align
+                .filter(filter_min_arc_size_text)
+                .text(function (d, i) { return d.donor; })
+                .transition().delay(d3.event.altKey ? 2750 : 750).style("opacity", 1);
         }
     });
 }
@@ -165,6 +208,15 @@ function arcTween(b) {
 
 function updateArc(d) {
     return { depth: d.depth, x: d.x, dx: d.dx };
+}
+
+function filter_min_arc_size_text(d, i) {
+    return (d.dx * d.depth * chart2_radius / 4) > 14;
+}
+
+function computeTextRotation(d) {
+    var angle = (d.x + d.dx / 2) * 180 / Math.PI - 90;
+    return angle;
 }
 
 d3.select(self.frameElement).style("height", chart2_margin.top + chart2_margin.bottom + "px");
