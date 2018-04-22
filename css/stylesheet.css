@@ -33,7 +33,7 @@ div#view-header {
     width: 100%;
     text-align: center;
 }
-div#view-menu-buttons {
+div#view-group-buttons {
     position: absolute;
     text-align: center;
     margin: 0px;
@@ -41,7 +41,7 @@ div#view-menu-buttons {
     top: 4em;
     left: 19em;
 }
-li.menu-buttons {
+li.group-buttons {
     display: inline;
 }
 a.group {

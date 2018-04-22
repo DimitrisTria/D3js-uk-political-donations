@@ -37,26 +37,27 @@
     </script>
     <!-- end of: analytics -->
 
-    <script src="js/stats.js"></script>
+    <script src="js/chart2_groups.js"></script>
+    <script src="js/stats_charts_groups.js"></script>
 </head>
 
 <body>
     <div id="view-header">
         <h1>Who's funding the big three?</h1>
-        <nav role="navigation" id="view-menu-buttons">
-            <li class="menu-buttons">
+        <nav role="navigation" id="view-group-buttons">
+            <li class="group-buttons">
                 <a href="#" role="button" id="all-donations" class="pure-button group">All money</a>
             </li>
-            <li class="menu-buttons">
+            <li class="group-buttons">
                 <a href="#" role="button" id="group-by-money-source" class="pure-button group">The public's purse</a>
             </li>
-            <li class="menu-buttons">
+            <li class="group-buttons">
                 <a href="#" role="button" id="group-by-party" class="pure-button group">Split private by party</a>
             </li>
-            <li class="menu-buttons">
+            <li class="group-buttons">
                 <a href="#" role="button" id="group-by-donor-type" class="pure-button group">Split private by type of donor</a>
             </li>
-            <li class="menu-buttons">
+            <li class="group-buttons">
                 <a href="#" role="button" id="group-by-donor-amount" class="pure-button group">Split by amount of donation</a>
             </li>
         </nav>
@@ -231,21 +232,21 @@
         </div>
         <!-- end of: annotations -->
 
-        <svg id="chart1_d3"></svg>
+        <svg id="chart1_svg"></svg>
     </div>
 
     <div id="view_chart2_d3" class="tabcontent">
-        <svg id="chart2_d3"></svg>
+        <svg id="chart2_svg"></svg>
     </div>
 
     <div id="view_stats_charts_d3" class="tabcontent">
-        <svg id="stats_chart1_d3"></svg>
+        <svg id="stats_chart1_svg"></svg>
     </div>
 
     <div id="view-mode-buttons">
-        <button id="mode_chart1_d3" class="tablink mode" onclick="modeFocus('view_chart1_d3', this, 'rgba(255, 0, 0, 0.3)')">view1</button>
-        <button id="mode_chart2_d3" class="tablink mode" onclick="modeFocus('view_chart2_d3', this, 'rgba(0, 255, 0, 0.3)')">view2</button>
-        <button id="mode_stats_charts_d3" class="tablink mode" onclick="modeFocus('view_stats_charts_d3', this, 'rgba(0, 0, 255, 0.3)')">statistics</button>
+        <button id="mode_chart1_svg" class="tablink mode" onclick="modeButtonFocus('view_chart1_d3', this, 'rgba(255, 0, 0, 0.3)')">view1</button>
+        <button id="mode_chart2_svg" class="tablink mode" onclick="modeButtonFocus('view_chart2_d3', this, 'rgba(0, 255, 0, 0.3)')">view2</button>
+        <button id="mode_stats_charts_svgs" class="tablink mode" onclick="modeButtonFocus('view_stats_charts_d3', this, 'rgba(0, 0, 255, 0.3)')">statistics</button>
     </div>
 
     <!-- history bar -->
@@ -267,10 +268,16 @@
     <script src='js/libs/responsivevoice.js'></script>
 
     <script src="js/main.js"></script>
-    <script src="js/interacting.js"></script>
-    <script src="js/charts.js"></script>
-    <script src="js/charts_interacting.js"></script>
-    <script src="js/charts_groups.js"></script>
+    <script src="js/main_interacting.js"></script>
+    
+    <script src="js/chart1.js"></script>
+    <script src="js/chart1_interacting.js"></script>
+    <script src="js/chart1_groups.js"></script>
+    
+    <script src="js/chart2.js"></script>
+    <script src="js/chart2_interacting.js"></script>
+    
+    <script src="js/stats_charts.js"></script>
 </body>
 
 </html>

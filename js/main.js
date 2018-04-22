@@ -1,4 +1,9 @@
-var mode_lst = ["mode_chart1_d3", "mode_chart2_d3", "mode_stats_charts_d3"];
+
+
+var newColors_lst = ["#EE2288", "#22EE88", "#22FFEE"];
+var oldToNewColors_dct = { "#F02233": "#EE2288", "#087FBD": "#22EE88", "#FDBB30": "#22FFEE" };
+var mode_lst = ["mode_chart1_svg", "mode_chart2_svg", "mode_stats_charts_svgs"];
+var mode_dct = { "mode_chart1_svg": transition_chart1_d3, "mode_chart2_svg": transition_chart2_d3, "mode_stats_charts_svgs": transition_stats_charts };
 var group_lst = ["all-donations", "group-by-money-source", "group-by-party", "group-by-donor-type", "group-by-donor-amount"];
 
 //initial content
@@ -7,13 +12,17 @@ var currentGroup = group_lst[0];
 var previewsMode = "";
 var previewsGroup = "";
 
+/* on page load */
+    // check first lines of main_interacting.js
+/* end of: on page load */
+
 // mode selection
 $(document).ready(function () {
     d3.selectAll(".mode").on("click", function () {
         currentMode = d3.select(this).attr("id");
         modeButtonSound.play();
         if (currentMode != previewsMode) {
-            return evnt(currentMode, currentGroup);
+            return currentEvent(currentMode, currentGroup);
         }
     });
 });
@@ -24,19 +33,13 @@ $(document).ready(function () {
         currentGroup = d3.select(this).attr("id");
         groupButtonSound.play();
         if (previewsGroup != currentGroup) {
-            groupFocus(currentGroup, previewsGroup); //marks current group button
-            return evnt(currentMode, currentGroup);
+            groupButtonFocus(currentGroup, previewsGroup); //marks current group button
+            return currentEvent(currentMode, currentGroup);
         }
     });
 });
 
-var mode_dct = {
-    "mode_chart1_d3": transition_chart1_d3,
-    "mode_chart2_d3": transition_chart2_d3,
-    "mode_stats_charts_d3": transition_stats_charts
-};
-
-function evnt(mode, group) {
+function currentEvent(mode, group) {
     if (mode == mode_lst[0] || mode == mode_lst[1]) {
         $("#view-history-bar").fadeIn(1000);
     }
@@ -45,7 +48,7 @@ function evnt(mode, group) {
     }
     mode_dct[mode](group);
 
-    //update previews values
+    //store latest mode and group
     previewsMode = currentMode;
     previewsGroup = currentGroup;
 }
@@ -93,12 +96,13 @@ function transition_chart1_d3(group) {
     }
 }
 
+var chart2_event_data_dct = { "all-donations": "grp1", "group-by-money-source": "grp2", "group-by-party": "grp3", "group-by-donor-type": "grp4", "group-by-donor-amount": "grp5" };
 function transition_chart2_d3(group) {
-    console.log("-" + currentMode);
+    d3.select("#chart2_svg").selectAll("*").remove(); // :)
+    chart2Display(chart2_event_data_dct[group]);
 }
 
 function transition_stats_charts(group) {
-    // epeidh den kanw update to d3
-    d3.select("#stats_chart1_d3").selectAll("*").remove(); // :)
-    barChartDisplay(group);
+    d3.select("#stats_chart1_svg").selectAll("*").remove(); // :)
+    statsChart1Display(group);
 }

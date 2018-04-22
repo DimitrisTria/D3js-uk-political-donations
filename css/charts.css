@@ -1,32 +1,33 @@
-svg#chart1_d3, svg#chart2_d3, svg#stats_chart1_d3 {
+svg#chart1_svg, svg#chart2_svg, svg#stats_chart1_svg {
     left: 1em;
     top: 1em;
     z-index: 1;
 }
-svg#chart1_d3, svg#chart2_d3 {
+svg#chart1_svg, svg#chart2_svg {
     position: relative;
     height: 53em;
 }
 
-/* ****** chart1_d3 ****** */
-svg#chart1_d3 {
+/* ****** chart1_svg ****** */
+svg#chart1_svg {
     width: 66.7em;
 }
-circle {
+#chart1_svg circle {
     stroke: rgba(238, 238, 238, 1);
     stroke-width: 0.5;
+    cursor: pointer;
 }
-circle.active {
+#chart1_svg circle.active {
     stroke: rgba(17, 17, 17, 0.8);
     stroke-width: 5;
 }
 
-.legend circle {
+#chart1_svg .legend circle {
     stroke: #aabbcc;
     stroke-width: 1;
     fill: none;
 }
-.tooltip {
+div#chart1Tooltip {
     position: absolute;
     margin: 0;
     padding: 0;
@@ -41,21 +42,41 @@ circle.active {
     -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
     box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
     background-color: rgba(255, 255, 255, 1);
+    z-index: 2;
 }
-.tooltip p, h3 {
+div#chart1Tooltip #chart1_svg p, #chart1_svg h3 {
     margin: 0.2em;
 }
-/* ****** end of: chart1_d3 ****** */
+/* ****** end of: chart1_svg ****** */
 
-/* ****** chart2_d3 ****** */
-svg#chart2_d3 {
-    width: 80em;
-    border: 2px solid blueviolet;
+/* ****** chart2_svg ****** */
+svg#chart2_svg {
+    width: auto;
+    height: auto;
 }
-/* ****** end of: chart2_d3 ****** */
+#chart2_svg circle, #chart2_svg path {
+    cursor: pointer;
+}
+#chart2_svg circle {
+    fill: none;
+    pointer-events: all;
+}
 
-/* ****** stats_chart1_d3 ****** */
-svg#stats_chart1_d3 {
+div#chart2Tooltip {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 3px;
+    text-align: center;
+    background-color: white;
+    z-index: 2;
+}
+/* ****** end of: chart2_svg ****** */
+
+/* ****** stats_charts_svg ****** */
+
+/* * stats_chart1_svg * */
+svg#stats_chart1_svg {
     position: relative;
     width: 50em;
     left: 1em;
@@ -73,4 +94,6 @@ svg#stats_chart1_d3 {
     font-size: 12px;
     font-weight: bold;
 }
-/* ****** end of: stats_chart1_d3 ****** */
+/* * end of: stats_chart1_svg * */
+
+/* ****** end of: stats_charts_svg ****** */
