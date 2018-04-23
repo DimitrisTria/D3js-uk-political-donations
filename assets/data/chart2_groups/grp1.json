@@ -7561,7 +7561,7 @@
                     "entityname": "Public Funds"
                 },
                 {
-                    "donor": "Electoral Commission(1)",
+                    "donor": "Electoral Commission",
                     "amount": "1639628",
                     "party": "lab",
                     "entity": "pub",
@@ -7579,7 +7579,7 @@
                     "entityname": "Public Funds"
                 },
                 {
-                    "donor": "Electoral Commission(2)",
+                    "donor": "Electoral Commission",
                     "amount": "1493335",
                     "party": "lib",
                     "entity": "pub",

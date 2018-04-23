@@ -3,6 +3,7 @@ var modeChart2_json_obj = {};
 function csvToJson(data) {
     modeChart2_lst = [chart2_grp1_pd(data), chart2_grp2_pd(data), chart2_grp3_pd(data), chart2_grp4_pd(data), chart2_grp5_pd(data)];
     modeChart2_json_obj = JSON.stringify(modeChart2_lst); // 0 gia to prwto group
+    // console.log(modeChart2_json_obj);
     return modeChart2_json_obj;
 }
 
