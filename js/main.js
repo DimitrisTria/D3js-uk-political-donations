@@ -1,5 +1,4 @@
 
-
 var newColors_lst = ["#EE2288", "#22EE88", "#22FFEE"];
 var oldToNewColors_dct = { "#F02233": "#EE2288", "#087FBD": "#22EE88", "#FDBB30": "#22FFEE" };
 var mode_lst = ["mode_chart1_svg", "mode_chart2_svg", "mode_stats_charts_svgs"];
@@ -13,7 +12,7 @@ var previewsMode = "";
 var previewsGroup = "";
 
 /* on page load */
-    // check first lines of main_interacting.js
+// check first lines of main_interacting.js
 /* end of: on page load */
 
 // mode selection
@@ -96,10 +95,9 @@ function transition_chart1_d3(group) {
     }
 }
 
-var chart2_event_data_dct = { "all-donations": "grp1", "group-by-money-source": "grp2", "group-by-party": "grp3", "group-by-donor-type": "grp4", "group-by-donor-amount": "grp5" };
 function transition_chart2_d3(group) {
     d3.select("#chart2_svg").selectAll("*").remove(); // :)
-    chart2Display(chart2_event_data_dct[group]);
+    chart2Display(group);
 }
 
 function transition_stats_charts(group) {

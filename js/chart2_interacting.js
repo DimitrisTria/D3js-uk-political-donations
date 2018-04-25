@@ -19,7 +19,7 @@ function mouseOverArc(d) {
     if (d.parent.donor != "root") {
         var imagePath = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + d.donor + ".ico";
         updateHistoryBar(d, imagePath);
-        responsiveVoice.speak(":" +d.donor +": with total value :" +d.amount +" pounds");
+        // responsiveVoice.speak(":" +d.donor +": with total value :" +d.amount +" pounds");
         chart2Tooltip.html(format_description(d, imagePath));
         return chart2Tooltip.style("display", "block").style("border", "2px solid" + oldToNewColors_dct[d.color]);
     }
@@ -30,7 +30,7 @@ function mouseOverArc(d) {
 
 function mouseOutArc(d) {
     d3.select(this).attr("stroke", "").style("transform", "scale(1)");
-    responsiveVoice.cancel();
+    // responsiveVoice.cancel();
     return chart2Tooltip.style("display", "none");
 }
 

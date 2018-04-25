@@ -1,11 +1,3 @@
-/* ****** stats_chart1_svg ****** */
-var stats1_lst = [];
-var stats1_dct = {};
-d3.csv("assets/data/7500up.csv", function (error, data) {
-    if (error) console.warn(error);
-    stats1_lst = calcDonorFreqByCategory(data);
-    stats1_dct = { "all-donations": stats1_lst[0], "group-by-money-source": stats1_lst[1], "group-by-party": stats1_lst[2], "group-by-donor-type": stats1_lst[3], "group-by-donor-amount": stats1_lst[4] };
-});
 
 // stats_chart1_margins, width and height of stats_chart1_svg
 var stats_chart1_margin = { top: 20, right: 10, bottom: 100, left: 50 };
@@ -20,10 +12,8 @@ var yScale = d3.scale.linear().range([height, 0]);
 var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-// draw stats_chart1_svg
-var currentStats_lst = [];
 function statsChart1Display(eventName) {
-    currentStats_lst = stats1_dct[eventName];
+    var currentStats_lst = stats_chart1_dct[eventName];
     var names_lst = [], values_lst = [];
     for (var i = 0; i < currentStats_lst.length; i++) {
         names_lst[i] = currentStats_lst[i][0];
