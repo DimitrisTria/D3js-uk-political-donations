@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>new_chart</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="css/stylesheet2.css">
+</head>
+
+<body>
+    <a style="position:absolute; left:1em; z-index: 1;" href="index.html">original dataset</a>
+
+    <div id="view-header">
+        <h2>Electric energy consumption</h2>
+        <nav role="navigation" id="view-group-buttons">
+            <li class="group-buttons">
+                <a href="#" role="button" id="group-all" class="pure-button group">All data</a>
+            </li>
+            <li class="group-buttons">
+                <a href="#" role="button" id="group-by-geographic-area" class="pure-button group">Group by geographic_area</a>
+            </li>
+            <li class="group-buttons">
+                <a href="#" role="button" id="group-by-region" class="pure-button group">Group by region</a>
+            </li>
+            <li class="group-buttons">
+                <a href="#" role="button" id="group-by-category-of-use" class="pure-button group">Group by category of use</a>
+            </li>
+        </nav>
+    </div>
+
+    <div id="info-box"></div>
+    <svg id="new_chart"></svg>
+
+    <script src="js/libs/jquery.min.js"></script>
+    <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>');</script>
+    <script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
+    <!-- <script src='js/libs/responsivevoice.js'></script> -->
+
+    <script src="js/new_chart.js"></script>
+    <script src="js/new_chart_groups.js"></script>
+</body>
+
+</html>

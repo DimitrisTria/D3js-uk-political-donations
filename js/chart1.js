@@ -4,7 +4,6 @@ var nodes = [];
 var chart1_svg = d3.select("#chart1_svg");
 var radius = d3.scale.sqrt().range([10, 20]);
 var chart1_fill = d3.scale.ordinal().range([newColors_lst[0], newColors_lst[1], newColors_lst[2]]); //circles colors (purple-green-cyan)
-var comma = d3.format(",.0f");
 
 function chart1Display(data) {
     var maxVal = d3.max(data, function (d) { return d.amount; });

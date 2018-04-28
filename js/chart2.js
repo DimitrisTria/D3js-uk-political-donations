@@ -31,7 +31,7 @@ function key(d) {
         p = p.parent;
     }
     var key = k.reverse().join(".");
-    key = checkForDoubleKeys(keyHist, key);
+    key = checkForDoubleKeys(keyHist, key); // :)
     keyHist.push(key);
     return key;
 }
@@ -102,7 +102,7 @@ function chart2Display(group) {
         .attr("x", function (d) { return chart2_radius / 3 * d.depth; })
         .attr("dx", "6") // margin
         .attr("dy", ".35em") // vertical-align	
-        .text(function (d, i) { return d.donor })
+        .text(function (d) { return d.donor })
 
     function zoomIn(p) {
         if (p.depth > 1) p = p.parent;

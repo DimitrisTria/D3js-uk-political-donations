@@ -5,11 +5,11 @@ $(document).ready(function () {
 });
 /* end of: on page load */
 
-var groupButtonSound = new Audio();
-groupButtonSound.src = "assets/sounds/groupButtonSound.wav";
-
 var modeButtonSound = new Audio();
 modeButtonSound.src = "assets/sounds/modeButtonSound.wav";
+
+var groupButtonSound = new Audio();
+groupButtonSound.src = "assets/sounds/groupButtonSound.wav";
 
 /* header and footer colors */
 var headerAndFooterColor = "rgba(170, 170, 170, 0.9)";
@@ -45,7 +45,7 @@ function groupButtonFocus(curGroup, prevGroup) {
     curGroupElement.style.color = "rgb(255, 255, 255)";
     curGroupElement.style.backgroundColor = "rgb(190, 190, 150)";
 
-    if(prevGroup!="") {
+    if (prevGroup != "") {
         var prevGroupElement = document.getElementById(prevGroup);
         prevGroupElement.style.color = "rgb(0, 0, 0)";
         prevGroupElement.style.backgroundColor = "#E6E6E6";
@@ -56,7 +56,6 @@ function groupButtonFocus(curGroup, prevGroup) {
 var sizeOfHistoryBar = 8;
 var historyBarItemsCounter = 0;
 var historyBarElement = document.getElementById("view-history-bar");
-var newImgElement = document.createElement("IMG");
 var histTooltip = d3.select("body").append("div").attr("id", "histTooltip");
 
 function updateHistoryBar(d, imagePath) {
@@ -68,29 +67,30 @@ function updateHistoryBar(d, imagePath) {
     imgNode.onclick = function () {
         googleSearch(d.donor);
     };
-    imgNode.onmouseover = function (event) {
+    imgNode.onmousemove = function (event) {
         var pageX = event.clientX;
         var pageY = event.clientY;
         imgNode.style.boxShadow = "0 0 2px 1px rgba(50, 140, 186, 0.7)";
         histTooltip
-            .style("opacity", 0.9)
+            .style("opacity", "0.9")
             .html(d.donor)
-            .style("left", pageX-170 +"px")
-            .style("top", pageY +"px");
+            .style("width", "auto")
+            .style("height", "auto")
+            .style("left", pageX - 155 + "px")
+            .style("top", pageY + "px");
         // responsiveVoice.speak(":" + d.donor + ": with total value :" + d.amount + " pounds");
     };
     imgNode.onmouseout = function () {
         imgNode.style.boxShadow = "";
-        histTooltip.style("opacity", 0);
+        histTooltip.style("opacity", "0");
         // responsiveVoice.cancel();
     };
-    newImgElement.appendChild(imgNode);
 
     if (historyBarItemsCounter >= sizeOfHistoryBar) {
         historyBarElement.removeChild(historyBarElement.childNodes[sizeOfHistoryBar - 1]); //remove last image
     } else {
         historyBarItemsCounter = historyBarItemsCounter + 1;
     }
-    historyBarElement.insertBefore(imgNode, historyBarElement.childNodes[0]); //append new image
+    historyBarElement.insertBefore(imgNode, historyBarElement.childNodes[0]); //append new image on top
 }
 /* end of: image history bar */

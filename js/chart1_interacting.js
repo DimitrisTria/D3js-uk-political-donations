@@ -1,5 +1,6 @@
 
 var chart1Tooltip = d3.select("body").append("div").attr("id", "chart1Tooltip");
+var comma = d3.format(",.0f");
 
 function mouseoverCircle(d) {
     // chart1Tooltip popup

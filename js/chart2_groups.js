@@ -138,22 +138,21 @@ function chart2_grp3_pd(dataset) {
 }
 
 function chart2_grp4_pd(dataset) {
-    var categ_lst = ["Individual", "Society", "Company", "Other", "Trade Union"];
     var l1 = [], l2 = [], l3 = [], l4 = [], l5 = [];
     for (var i = 0; i < dataset.length; i++) {
-        if (dataset[i].entityname == categ_lst[0]) {
+        if (dataset[i].entityname == "Individual") {
             l1.push(dataset[i]);
         }
-        if (dataset[i].entityname == categ_lst[1]) {
+        if (dataset[i].entityname == "Society") {
             l2.push(dataset[i]);
         }
-        if (dataset[i].entityname == categ_lst[2]) {
+        if (dataset[i].entityname == "Company") {
             l3.push(dataset[i]);
         }
-        if (dataset[i].entityname == categ_lst[3]) {
+        if (dataset[i].entityname == "Other") {
             l4.push(dataset[i]);
         }
-        if (dataset[i].entityname == categ_lst[4]) {
+        if (dataset[i].entityname == "Trade Union") {
             l5.push(dataset[i]);
         }
     }
@@ -163,27 +162,27 @@ function chart2_grp4_pd(dataset) {
         amount: dataset.length,
         children: [
             {
-                donor: categ_lst[0],
+                donor: "Individuals",
                 amount: l1.length,
                 children: l1
             },
             {
-                donor: categ_lst[1],
+                donor: "Societies",
                 amount: l2.length,
                 children: l2
             },
             {
-                donor: categ_lst[2],
+                donor: "Companies",
                 amount: l3.length,
                 children: l3
             },
             {
-                donor: categ_lst[3],
+                donor: "Others",
                 amount: l4.length,
                 children: l4
             },
             {
-                donor: categ_lst[4],
+                donor: "Trade Unions",
                 amount: l5.length,
                 children: l5
             }

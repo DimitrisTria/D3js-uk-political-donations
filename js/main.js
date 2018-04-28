@@ -2,7 +2,7 @@
 var newColors_lst = ["#EE2288", "#22EE88", "#22FFEE"];
 var oldToNewColors_dct = { "#F02233": "#EE2288", "#087FBD": "#22EE88", "#FDBB30": "#22FFEE" };
 var mode_lst = ["mode_chart1_svg", "mode_chart2_svg", "mode_stats_charts_svgs"];
-var mode_dct = { "mode_chart1_svg": transition_chart1_d3, "mode_chart2_svg": transition_chart2_d3, "mode_stats_charts_svgs": transition_stats_charts };
+var mode_dct = { "mode_chart1_svg": transition_chart1, "mode_chart2_svg": transition_chart2, "mode_stats_charts_svgs": transition_stats_charts };
 var group_lst = ["all-donations", "group-by-money-source", "group-by-party", "group-by-donor-type", "group-by-donor-amount"];
 
 //initial content
@@ -52,7 +52,7 @@ function currentEvent(mode, group) {
     previewsGroup = currentGroup;
 }
 
-function transition_chart1_d3(group) {
+function transition_chart1(group) {
     if (group === "all-donations") {
         $("#initial-content").fadeIn(1000);
         $("#view-donor-type").fadeOut(250);
@@ -95,7 +95,7 @@ function transition_chart1_d3(group) {
     }
 }
 
-function transition_chart2_d3(group) {
+function transition_chart2(group) {
     d3.select("#chart2_svg").selectAll("*").remove(); // :)
     chart2Display(group);
 }

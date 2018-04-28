@@ -47,96 +47,45 @@ li.group-buttons {
 a.group {
     position: relative;
 }
-
-div#view_chart1_d3, div#view_chart2_d3, div#view_stats_charts_d3 {
-    position: relative;
-    width: 100%;
-    left: 0%;
-}
-div#view_chart1_d3 {background-color:rgba(255, 0, 0, 0.2);}
-div#view_chart2_d3 {background-color:rgba(0, 255, 0, 0.2);}
-div#view_stats_charts_d3 {background-color:rgba(0, 0, 255, 0.2);}
-
-div#view-mode-buttons {
+div#info-box {
     position: absolute;
+    width: 310px;
     height: auto;
-    left: 0em;
-    top: 3.2em;
+    right: 1em;
+    top: 6em;
+    padding: 3px;
+    border: 2px solid black;
 }
-button.tablink {
-    padding: 14px;
-    font-size: 17px;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: white;
-    background-color: #555;
-}
-button.tablink:hover {
-    background-color: #777;
-}
-a.mode {
+svg#new_chart {
     position: absolute;
-}
-div#view_chart1_d3.tabcontent, div#view_chart2_d3.tabcontent, div#view_stats_charts_d3.tabcontent {
-    position: relative;
-    display: none;
-    width: 100%;
-    height: 55em;
-    top: 6.5em;
-    padding: auto;
-}
-
-div#histTooltip {
-    position: fixed;
-    opacity: 0;
-    width: auto;
-    height: auto;
-    padding: 5px;
-    font: 12px sans-serif;
-    font-weight: bold;
-    border-radius: 5px;
-    background: lightsteelblue;
-    pointer-events: none;
-    z-index: 3;
-}
-div#view-history-bar {
-    position: fixed;
-    width: 60px;
-    height: 507px;
-    right: 1%;
-    top: 18.5%;
+    left: 1em;
+    top: 6em;
+    width: 1180px;
+    height: 640px;
     margin: 0;
     padding: 0;
-    border: 3px solid rgba(50, 10, 0, 0.7);
-    box-shadow: 0px 0px 10px rgba(20, 20, 20, 0.7);
-    background-color: #FFFFFF;
-    z-index: 3;
+    border: 2px solid blueviolet;
 }
-div#view-footer {
+#new_chart p, #new_chart h3 {
+    margin: 0.2em;
+}
+div.tooltip {
     position: absolute;
-    width: 100%;
-    height: 4em;
-    left: 0;
-    top: 61.5em;
-    margin: 0;
-    padding: 10px;
-}
-
-/* zoom */
-.zoom {
-    transition: all .2s ease-in-out;
+    width: auto;
+    height: auto;
+    margin: 0.2em;
+    padding: 0;
+    line-height: 1.4;
+    display: none;
+    text-align: left;
+    border: 4px solid rgba(0, 0, 0, 0.7);
+    border-radius: 1px;
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 1);
     z-index: 2;
 }
-.zoom:hover {
-    transform: scale(1.25);
-    padding: 2px;
-    background-color: #ffffcc;
-    border: 2px solid black;
-    z-index: 3;
-}
-/* end of: zoom */
 
 /* pure buttons */
 /*!
@@ -188,10 +137,3 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     border: 0;
 }
 /* end of: pure buttons */
-
-.myDefaultClass {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
