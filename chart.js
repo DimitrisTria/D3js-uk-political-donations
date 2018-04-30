@@ -6,25 +6,26 @@ var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
 
-var partyCentres = { 
-    con: { x: w / 3, y: h / 3.3}, 
-    lab: {x: w / 3, y: h / 2.3}, 
+var partyCentres = {
+    con: { x: w / 3, y: h / 3.3},
+    lab: {x: w / 3, y: h / 2.3},
     lib: {x: w / 3	, y: h / 1.8}
   };
 
-var entityCentres = { 
+var entityCentres = {
     company: {x: w / 3.65, y: h / 2.3},
-		union: {x: w / 3.65, y: h / 1.8},
-		other: {x: w / 1.15, y: h / 1.9},
-		society: {x: w / 1.12, y: h  / 3.2 },
-		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3},
+	union: {x: w / 3.65, y: h / 1.8},
+	other: {x: w / 1.15, y: h / 1.9},
+	society: {x: w / 1.12, y: h  / 3.2 },
+	pub: {x: w / 1.8, y: h / 2.8},
+	individual: {x: w / 3.65, y: h / 3.3},
 	};
 
 var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
 
-var svgCentre = { 
-    x: w / 3.6, y: h / 2
+var svgCentre = {
+    x: w / 3.6,
+    y: h / 2
   };
 
 var svg = d3.select("#chart").append("svg")
@@ -144,53 +145,48 @@ function fundsType() {
 
 function parties(e) {
 	node.each(moveToParties(e.alpha));
-
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
+    node.attr("cx", function(d) { return d.x; })
+		.attr("cy", function(d) {return d.y; });
 }
 
 function entities(e) {
 	node.each(moveToEnts(e.alpha));
-
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
+	node.attr("cx", function(d) { return d.x; })
+		.attr("cy", function(d) {return d.y; });
 }
 
 function types(e) {
 	node.each(moveToFunds(e.alpha));
-
-
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
+	node.attr("cx", function(d) { return d.x; })
+		.attr("cy", function(d) {return d.y; });
 }
 
 function all(e) {
 	node.each(moveToCentre(e.alpha))
 		.each(collide(0.001));
-
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
+	node.attr("cx", function(d) { return d.x; })
+		.attr("cy", function(d) {return d.y; });
 }
 
 
 function moveToCentre(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
-			if (d.value <= 25001) {
-				centreY = svgCentre.y + 75;
-			} else if (d.value <= 50001) {
-				centreY = svgCentre.y + 55;
-			} else if (d.value <= 100001) {
-				centreY = svgCentre.y + 35;
-			} else  if (d.value <= 500001) {
-				centreY = svgCentre.y + 15;
-			} else  if (d.value <= 1000001) {
-				centreY = svgCentre.y - 5;
-			} else  if (d.value <= maxVal) {
-				centreY = svgCentre.y - 25;
-			} else {
-				centreY = svgCentre.y;
-			}
+		if (d.value <= 25001) {
+			centreY = svgCentre.y + 75;
+		} else if (d.value <= 50001) {
+			centreY = svgCentre.y + 55;
+		} else if (d.value <= 100001) {
+			centreY = svgCentre.y + 35;
+		} else  if (d.value <= 500001) {
+			centreY = svgCentre.y + 15;
+		} else  if (d.value <= 1000001) {
+			centreY = svgCentre.y - 5;
+		} else  if (d.value <= maxVal) {
+			centreY = svgCentre.y - 25;
+		} else {
+			centreY = svgCentre.y;
+		}
 
 		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
 		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
@@ -294,7 +290,7 @@ function display(data) {
 				x: Math.random() * w,
 				y: -y
       };
-			
+
       nodes.push(node)
 	});
 
@@ -315,56 +311,39 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	
-
-
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
-
-	
-	
 	// *******************************************
-	
-	
-	
 
-	
+	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>"
 
-	
-	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>" 	
-	
 	 							+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-	
-	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
-	
-	}
+
+
+}
 
 function mouseout() {
 	// no more tooltips
-		var mosie = d3.select(this);
+	var mosie = d3.select(this);
 
-		mosie.classed("active", false);
+	mosie.classed("active", false);
 
-		d3.select(".tooltip")
-			.style("display", "none");
-		}
+	d3.select(".tooltip")
+		.style("display", "none");
+}
 
 $(document).ready(function() {
-		d3.selectAll(".switch").on("click", function(d) {
-      var id = d3.select(this).attr("id");
-      return transition(id);
+	d3.selectAll(".switch").on("click", function(d) {
+        var id = d3.select(this).attr("id");
+        return transition(id);
     });
     return d3.csv("data/7500up.csv", display);
-
 });
-
-
