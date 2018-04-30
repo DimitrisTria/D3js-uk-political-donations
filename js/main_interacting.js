@@ -1,7 +1,10 @@
 /* on page load */
 document.getElementById(currentMode).click();
 $(document).ready(function () {
-    return d3.csv("assets/data/7500up.csv", chart1Display);
+    return d3.csv("assets/data/7500up.csv", function(error, data) {
+        if (error) return console.warn(error);
+        chart1Display(data);
+    });
 });
 /* end of: on page load */
 

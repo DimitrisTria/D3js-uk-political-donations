@@ -2,10 +2,32 @@
 <html>
 
 <head>
-    <title>new_chart</title>
+    <title>Electric energy consumption</title>
     <meta charset="utf-8" />
 
     <link rel="stylesheet" href="css/stylesheet2.css">
+    <link rel="stylesheet" href="css/chart1_2_annotations.css">
+
+    <script src="js/_libs/jquery.min.js"></script>
+    <script src="js/_libs/d3.v3.min.js"></script>
+    <!-- <script src='js/_libs/responsivevoice.js'></script> -->
+
+    <!-- analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-44807543-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- end of: analytics -->
 </head>
 
 <body>
@@ -15,7 +37,7 @@
         <h2>Electric energy consumption</h2>
         <nav role="navigation" id="view-group-buttons">
             <li class="group-buttons">
-                <a href="#" role="button" id="group-all" class="pure-button group">All data</a>
+                <a href="#" role="button" id="group-all" class="pure-button group">All</a>
             </li>
             <li class="group-buttons">
                 <a href="#" role="button" id="group-by-geographic-area" class="pure-button group">Group by geographic_area</a>
@@ -29,16 +51,26 @@
         </nav>
     </div>
 
+    <div id="new_chart_annotations">
+        <div id="all_ann">
+
+        </div>
+        <div id="geographic_area_ann">
+
+        </div>
+        <div id="region_ann">
+
+        </div>
+        <div id="category_of_use_ann">
+
+        </div>
+    </div>
+
+    <svg id="chart1_2"></svg>
     <div id="info-box"></div>
-    <svg id="new_chart"></svg>
 
-    <script src="js/libs/jquery.min.js"></script>
-    <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>');</script>
-    <script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
-    <!-- <script src='js/libs/responsivevoice.js'></script> -->
-
-    <script src="js/new_chart.js"></script>
-    <script src="js/new_chart_groups.js"></script>
+    <script src="js/chart1_2/chart1_2.js"></script>
+    <script src="js/chart1_2/chart1_2_groups.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 /* Information boxes for different chart layouts */
-div#annotations {
+div#chart1_annotations {
     position: absolute;
     z-index: 2;
 }
@@ -58,7 +58,7 @@ div#public-or-private-money-split {
 div#private-money, div#public-money {
     width: 150px;
     height: 125px;
-    top: 527px;
+    top: 570px;
 }
 div#private-money { left: 13em; }
 div#public-money { left: 42em; }

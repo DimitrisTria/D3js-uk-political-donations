@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Who's funding the big three?</title>
     <meta property="og:image" content="http://isthisjam.com.s3.amazonaws.com/img/bubble-img.png" />
     <!-- 180x110 Image for Linkedin -->
@@ -13,12 +13,19 @@
     <meta property="og:image:width" content="200" />
     <meta property="og:image:height" content="200" />
 
-    <!-- css -->
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/chart1_annotations.css">
     <link rel="stylesheet" href="css/charts.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700">
-    <!-- end of: css -->
+
+    <script src="js/_libs/jquery.min.js"></script>
+    <script src="js/_libs/d3.v3.min.js"></script>
+    <script src='js/_libs/responsivevoice.js'></script>
+
+    <!-- calc data on page load -->
+    <script src="js/chart2/chart2_groups.js"></script>
+    <script src="js/stats_charts/stats_charts_groups.js"></script>
+    <script src="js/data.js"></script>
 
     <!-- analytics -->
     <script type="text/javascript">
@@ -36,16 +43,6 @@
         })();
     </script>
     <!-- end of: analytics -->
-
-    <script src="js/libs/jquery.min.js"></script>
-    <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>');</script>
-    <script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
-    <script src='js/libs/responsivevoice.js'></script>
-
-    <!-- calc data on page load -->
-    <script src="js/chart2_groups.js"></script>
-    <script src="js/stats_charts_groups.js"></script>
-    <script src="js/data.js"></script>
 </head>
 
 <body>
@@ -74,7 +71,7 @@
 
     <div id="view_chart1_d3" class="tabcontent">
         <!-- annotations -->
-        <div id="annotations">
+        <div id="chart1_annotations">
             <!-- Initial annotations -->
             <div id="initial-content">
                 <h2 class="zoom">
@@ -276,12 +273,12 @@
 
     <script src="js/main.js"></script>
     <script src="js/main_interacting.js"></script>
-    <script src="js/chart1.js"></script>
-    <script src="js/chart1_interacting.js"></script>
-    <script src="js/chart1_groups.js"></script>
-    <script src="js/chart2.js"></script>
-    <script src="js/chart2_interacting.js"></script>
-    <script src="js/stats_charts.js"></script>
+    <script src="js/chart1/chart1.js"></script>
+    <script src="js/chart1/chart1_interacting.js"></script>
+    <script src="js/chart1/chart1_groups.js"></script>
+    <script src="js/chart2/chart2.js"></script>
+    <script src="js/chart2/chart2_interacting.js"></script>
+    <script src="js/stats_charts/stats_charts.js"></script>
 </body>
 
 </html>

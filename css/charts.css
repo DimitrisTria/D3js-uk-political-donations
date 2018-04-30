@@ -1,5 +1,5 @@
 svg#chart1_svg, svg#chart2_svg, svg#stats_chart1_svg {
-    left: 1em;
+    left: 0;
     top: 1em;
     z-index: 1;
 }
@@ -10,7 +10,7 @@ svg#chart1_svg, svg#chart2_svg {
 
 /* ****** chart1_svg ****** */
 svg#chart1_svg {
-    width: 66.7em;
+    width: 66em;
 }
 #chart1_svg circle {
     stroke: rgba(238, 238, 238, 1);

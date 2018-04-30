@@ -59,7 +59,6 @@ function transition_chart1(group) {
         $("#view-source-type").fadeOut(250);
         $("#view-party-type").fadeOut(250);
         $("#view-by-amount").fadeOut(250);
-        return total();
     }
     if (group === "group-by-money-source") {
         $("#initial-content").fadeOut(250);
@@ -67,7 +66,6 @@ function transition_chart1(group) {
         $("#view-party-type").fadeOut(250);
         $("#view-source-type").fadeIn(1000);
         $("#view-by-amount").fadeOut(250);
-        return fundsType();
     }
     if (group === "group-by-party") {
         $("#initial-content").fadeOut(250);
@@ -75,7 +73,6 @@ function transition_chart1(group) {
         $("#view-source-type").fadeOut(250);
         $("#view-party-type").fadeIn(1000);
         $("#view-by-amount").fadeOut(250);
-        return partyGroup();
     }
     if (group === "group-by-donor-type") {
         $("#initial-content").fadeOut(250);
@@ -83,7 +80,6 @@ function transition_chart1(group) {
         $("#view-source-type").fadeOut(250);
         $("#view-donor-type").fadeIn(1000);
         $("#view-by-amount").fadeOut(250);
-        return donorType();
     }
     if (group === "group-by-donor-amount") {
         $("#initial-content").fadeOut(250);
@@ -91,8 +87,8 @@ function transition_chart1(group) {
         $("#view-party-type").fadeOut(250);
         $("#view-source-type").fadeOut(250);
         $("#view-by-amount").fadeIn(1000);
-        return donorAmount();
     }
+    return total1();
 }
 
 function transition_chart2(group) {

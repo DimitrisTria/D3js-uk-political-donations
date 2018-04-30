@@ -1,0 +1,9 @@
+
+div#new_chart_annotaions {
+    position: absolute;
+    width: auto;
+    height: auto;
+    left: 1em;
+    top: 6em;
+    border: 2px solid lightcoral;
+}
