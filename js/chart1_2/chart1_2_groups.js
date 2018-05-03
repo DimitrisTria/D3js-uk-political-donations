@@ -2,8 +2,7 @@
 var groupEvent_dct = {
     "group-all": group1_2_1,
     "group-by-geographic-area": group1_2_2,
-    "group-by-region": group1_2_3,
-    "group-by-category-of-use": group1_2_4
+    "group-by-region": group1_2_3
 };
 
 var padding = 2;
@@ -118,21 +117,3 @@ function group1_2_3(alpha) {
     };
 }
 /* ------ end of: group1_2_3 ------ */
-
-function group1_2_4(alpha) {
-    return function (d) {
-        if (d.total >= 0 && d.total <= 1000000) {
-            centreX = 350;
-            centreY = 300;
-        }
-        else {
-            centreX = 400;
-            centreY = 400;
-        }
-
-        d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-        d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
-    };
-}
-
-/* end of: actual groups */

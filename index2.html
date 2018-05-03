@@ -5,12 +5,13 @@
     <title>Electric energy consumption</title>
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="css/stylesheet2.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/charts.css">
     <link rel="stylesheet" href="css/chart1_2_annotations.css">
 
     <script src="js/_libs/jquery.min.js"></script>
     <script src="js/_libs/d3.v3.min.js"></script>
-    <!-- <script src='js/_libs/responsivevoice.js'></script> -->
+    <script src='js/_libs/responsivevoice.js'></script>
 
     <!-- analytics -->
     <script type="text/javascript">
@@ -31,7 +32,7 @@
 </head>
 
 <body>
-    <a style="position:absolute; left:1em; z-index: 1;" href="index.html">original dataset</a>
+    <a style="position:absolute; left:1em; z-index: 1;" href="index.html"> previous dataset </a>
 
     <div id="view-header">
         <h2>Electric energy consumption</h2>
@@ -40,34 +41,62 @@
                 <a href="#" role="button" id="group-all" class="pure-button group">All</a>
             </li>
             <li class="group-buttons">
-                <a href="#" role="button" id="group-by-geographic-area" class="pure-button group">Group by geographic_area</a>
+                <a href="#" role="button" id="group-by-geographic-area" class="pure-button group">Group by geographic area</a>
             </li>
             <li class="group-buttons">
                 <a href="#" role="button" id="group-by-region" class="pure-button group">Group by region</a>
             </li>
-            <li class="group-buttons">
-                <a href="#" role="button" id="group-by-category-of-use" class="pure-button group">Group by category of use</a>
-            </li>
         </nav>
     </div>
 
-    <div id="new_chart_annotations">
-        <div id="all_ann">
-
+    <div id="chart1_2_annotations">
+        <div id="all_ann" class="zoom">
+            <h2> Electric energy consumption in Greece </h2>
+            <hr style="height: 7px;">
+            <p> * Κατανάλωση ηλεκτρικής ενέργειας στην Ελλάδα, κατά μεγάλη γεωγραφική περιοχή, περιφέρεια, νομό και κατά κατηγορία
+                χρήσης: 2012 </p>
+            <p> * Κατηγορίες χρήσεις: </p>
+            <p> -> 1. Οικιακή χρήση (Domestic use) </p>
+            <p> -> 2. Εμπορική χρήση (Commercial use) </p>
+            <p> -> 3. Βιομηχανική χρήση (Industrial use) </p>
+            <p> -> 4. Γεωργική χρήση (Agricultural use) </p>
+            <p> -> 5. Δημόσιες και Δημοτικές Αρχές (Public and Municipal Authorities) </p>
+            <p> -> 6. Φωτισμός οδών (Streeet Lighting) </p>
         </div>
         <div id="geographic_area_ann">
-
+            <h2 id="geographic_area_ann1" class="zoom"> Northern Greece </h2>
+            <h2 id="geographic_area_ann2" class="zoom"> Central Greece </h2>
+            <h2 id="geographic_area_ann3" class="zoom"> Attiki </h2>
+            <h2 id="geographic_area_ann4" class="zoom"> Aegean Islands-Kriti,Kriti </h2>
         </div>
         <div id="region_ann">
-
-        </div>
-        <div id="category_of_use_ann">
-
+            <div id="region_ann_row1">
+                <h3 id="region_ann1" class="zoom"> Eastern Macedonia and Thraki </h3>
+                <h3 id="region_ann2" class="zoom"> Central Macedonia </h3>
+                <h3 id="region_ann3" class="zoom"> Western Macedonia </h3>
+                <h3 id="region_ann4" class="zoom"> Thessalia </h3>
+            </div>
+            <div id="region_ann_row2">
+                <h3 id="region_ann5" class="zoom"> Ipiros </h3>
+                <h3 id="region_ann6" class="zoom"> Ionian Islands </h3>
+                <h3 id="region_ann7" class="zoom"> Western Greece </h3>
+                <h3 id="region_ann8" class="zoom"> Central Greece </h3>
+                <h3 id="region_ann9" class="zoom"> Peloponnissos </h3>
+            </div>
+            <div id="region_ann_row3">
+                <h3 id="region_ann10" class="zoom"> Attiki </h3>
+                <h3 id="region_ann11" class="zoom"> Islands of Northern Egeo </h3>
+                <h3 id="region_ann12" class="zoom"> Islands of Southern Egeo </h3>
+                <h3 id="region_ann13" class="zoom"> Kriti </h3>
+            </div>
         </div>
     </div>
 
-    <svg id="chart1_2"></svg>
-    <div id="info-box"></div>
+    <svg id="chart1_2_svg"></svg>
+    <div id="info-box">
+        <p> <b style='text-align: center;'>info box</b> </p>
+        <hr/>
+    </div>
 
     <script src="js/chart1_2/chart1_2.js"></script>
     <script src="js/chart1_2/chart1_2_groups.js"></script>

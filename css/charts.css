@@ -73,9 +73,52 @@ div#chart2Tooltip {
 }
 /* ****** end of: chart2_svg ****** */
 
+/* ****** chart1_2 ****** */
+div#info-box {
+    position: absolute;
+    width: 310px;
+    height: auto;
+    left: 75em;
+    top: 6em;
+    padding: 3px;
+    border: 2px solid black;
+}
+svg#chart1_2_svg {
+    position: absolute;
+    left: 1em;
+    top: 6em;
+    width: 1180px;
+    height: 640px;
+    margin: 0;
+    padding: 0;
+}
+svg#chart1_2_svg p, svg#chart1_2_svg h3 {
+    margin: 0.2em;
+}
+div#chart1_2Tooltip {
+    position: absolute;
+    width: auto;
+    height: auto;
+    margin: 0.2em;
+    padding: 0;
+    opacity: 1;
+    line-height: 1.4;
+    display: none;
+    text-align: left;
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    border-radius: 1px;
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 2;
+}
+/* ****** end of: chart1_2 ****** */
+
+
 /* ****** stats_charts_svg ****** */
 
-/* * stats_chart1_svg * */
+/* stats_chart1_svg */
 svg#stats_chart1_svg {
     position: relative;
     width: 50em;
@@ -86,7 +129,7 @@ svg#stats_chart1_svg {
 }
 .axis path, .axis line {
     fill: none;
-    stroke: #000;
+    stroke: black;
     shape-rendering: crispEdges;
 }
 .axis text{
@@ -94,6 +137,6 @@ svg#stats_chart1_svg {
     font-size: 12px;
     font-weight: bold;
 }
-/* * end of: stats_chart1_svg * */
+/* end of: stats_chart1_svg */
 
 /* ****** end of: stats_charts_svg ****** */

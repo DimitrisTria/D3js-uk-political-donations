@@ -32,6 +32,6 @@ function mouseoverCircle(d) {
 function mouseoutCircle() {
     /* no more chart1Tooltip */
     d3.select(this).classed("active", false);
-    // responsiveVoice.cancel();
     chart1Tooltip.style("display", "none");
+    // responsiveVoice.cancel();
 }
