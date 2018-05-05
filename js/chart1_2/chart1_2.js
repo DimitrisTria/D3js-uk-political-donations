@@ -115,7 +115,7 @@ function chart1_2_Display(data) {
 }
 
 function clickCircle(d) {
-    googleSearch(d.donor);
+    googleSearch(d.department_en);
 }
 
 function mouseoverCircle(d) {
