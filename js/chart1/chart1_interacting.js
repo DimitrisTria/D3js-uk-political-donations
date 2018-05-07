@@ -26,12 +26,12 @@ function mouseoverCircle(d) {
         .style("top", ((parseInt(d3.select(this).attr("cy") - (d.radius + 150)) + offset.top) - 13) + "px")
         .html(infoBox).style("display", "block");
 
-    // responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
+    responsiveVoice.speak(":" +d.donor +": with total value :" +comma(amount) +" pounds");
 }
 
 function mouseoutCircle() {
     /* no more chart1Tooltip */
     d3.select(this).classed("active", false);
     chart1Tooltip.style("display", "none");
-    // responsiveVoice.cancel();
+    responsiveVoice.cancel();
 }
