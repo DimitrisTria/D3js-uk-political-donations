@@ -7,14 +7,12 @@ var group_lst = ["all-donations", "group-by-money-source", "group-by-party", "gr
 
 //initial content
 var currentMode = mode_lst[0];
-var currentGroup = group_lst[0];
 var previewsMode = "";
+var currentGroup = group_lst[0];
 var previewsGroup = "";
 
-/* on page load */
-// check first lines of main_interacting.js
-/* end of: on page load */
 
+/* ****** on click events ******/
 // mode selection
 $(document).ready(function () {
     d3.selectAll(".mode").on("click", function () {
@@ -24,10 +22,7 @@ $(document).ready(function () {
             return currentEvent(currentMode, currentGroup);
         }
     });
-});
 
-// group selection
-$(document).ready(function () {
     d3.selectAll(".group").on("click", function () {
         currentGroup = d3.select(this).attr("id");
         groupButtonSound.play();
@@ -36,52 +31,60 @@ $(document).ready(function () {
             return currentEvent(currentMode, currentGroup);
         }
     });
+    return d3.csv("assets/data/7500up.csv", function(error, data) {
+        if (error) { console.warn(error); }
+        else {
+            document.getElementById(currentMode).click();
+            chart1Display(data);
+        }
+    });
 });
+/* ****** end of: on click events ******/
 
 function currentEvent(mode, group) {
     if (mode == mode_lst[0] || mode == mode_lst[1]) {
         $("#view-history-bar").fadeIn(1000);
     }
     else {
-        $("#view-history-bar").fadeOut(250);
+        $("#view-history-bar").fadeOut(150);
     }
     mode_dct[mode](group);
 
     //store latest mode and group
-    previewsMode = currentMode;
-    previewsGroup = currentGroup;
+    previewsMode = mode;
+    previewsGroup = group;
 }
 
 function transition_chart1(group) {
-    if (group === "all-donations") {
+    if (group === group_lst[0]) {
         $("#initial-content").fadeIn(850);
         $("#view-source-type").fadeOut(150);
         $("#view-party-type").fadeOut(150);
         $("#view-donor-type").fadeOut(150);
         $("#view-by-amount").fadeOut(150);
     }
-    if (group === "group-by-money-source") {
+    else if (group === group_lst[1]) {
         $("#initial-content").fadeOut(150);
         $("#view-source-type").fadeIn(850);
         $("#view-party-type").fadeOut(150);
         $("#view-donor-type").fadeOut(150);
         $("#view-by-amount").fadeOut(150);
     }
-    if (group === "group-by-party") {
+    else if (group === group_lst[2]) {
         $("#initial-content").fadeOut(150);
         $("#view-source-type").fadeOut(150);
         $("#view-party-type").fadeIn(850);
         $("#view-donor-type").fadeOut(150);
         $("#view-by-amount").fadeOut(150);
     }
-    if (group === "group-by-donor-type") {
+    else if (group === group_lst[3]) {
         $("#initial-content").fadeOut(150);
         $("#view-party-type").fadeOut(150);
         $("#view-source-type").fadeOut(150);
         $("#view-donor-type").fadeIn(850);
         $("#view-by-amount").fadeOut(150);
     }
-    if (group === "group-by-donor-amount") {
+    else if (group === group_lst[4]) {
         $("#initial-content").fadeOut(150);
         $("#view-donor-type").fadeOut(150);
         $("#view-party-type").fadeOut(150);

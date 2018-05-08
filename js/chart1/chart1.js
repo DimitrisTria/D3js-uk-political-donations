@@ -2,11 +2,11 @@
 var w = 1000, h = 800;
 var nodes = [];
 var chart1_svg = d3.select("#chart1_svg");
-var radius = d3.scale.sqrt().range([10, 20]);
 var chart1_fill = d3.scale.ordinal().range([newColors_lst[0], newColors_lst[1], newColors_lst[2]]); //circles colors (purple-green-cyan)
+var maxVal = 0, force = 0;
 
 function chart1Display(data) {
-    var maxVal = d3.max(data, function (d) { return d.amount; });
+    maxVal = d3.max(data, function (d) { return d.amount; });
     var radiusScale = d3.scale.sqrt().domain([0, maxVal]).range([10, 20]);
     data.forEach(function (d) {
         var node = {
@@ -24,6 +24,7 @@ function chart1Display(data) {
 
         nodes.push(node);
     });
+    
     force = d3.layout.force().nodes(nodes).size([w, h]);
 
     node = chart1_svg.append("g")

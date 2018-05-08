@@ -1,18 +1,7 @@
-/* on page load */
-document.getElementById(currentMode).click();
-$(document).ready(function () {
-    return d3.csv("assets/data/7500up.csv", function(error, data) {
-        if (error) return console.warn(error);
-        chart1Display(data);
-    });
-});
-/* end of: on page load */
 
-var modeButtonSound = new Audio();
-modeButtonSound.src = "assets/sounds/modeButtonSound.wav";
-
-var groupButtonSound = new Audio();
-groupButtonSound.src = "assets/sounds/groupButtonSound.wav";
+/* audio */
+var modeButtonSound = new Audio("assets/audio/modeButtonSound.wav");
+var groupButtonSound = new Audio("assets/audio/groupButtonSound.wav");
 
 /* header and footer colors */
 var headerAndFooterColor = "rgba(170, 170, 170, 0.9)";
@@ -27,6 +16,7 @@ function googleSearch(itemToSearch) {
 }
 /* end of: search with google */
 
+/* modeButtonFocus */
 function modeButtonFocus(modeByElmnt, elmnt, color) {
     var tabcontent = document.getElementsByClassName("tabcontent");
     for (var i = 0; i < tabcontent.length; i++) {
@@ -42,10 +32,12 @@ function modeButtonFocus(modeByElmnt, elmnt, color) {
 
     elmnt.style.backgroundColor = color;
 }
+/* end of: modeButtonFocus */
 
+/* groupButtonFocus */
 function groupButtonFocus(curGroup, prevGroup) {
     var curGroupElement = document.getElementById(curGroup);
-    curGroupElement.style.color = "rgb(255, 255, 255)";
+    curGroupElement.style.color = "rgb(255, 255, 255)"; //letter's color
     curGroupElement.style.backgroundColor = "rgb(190, 190, 150)";
 
     if (prevGroup != "") {
@@ -54,6 +46,7 @@ function groupButtonFocus(curGroup, prevGroup) {
         prevGroupElement.style.backgroundColor = "#E6E6E6";
     }
 }
+/* end of: groupButtonFocus */
 
 /* image history bar */
 var sizeOfHistoryBar = 8;
@@ -81,12 +74,12 @@ function updateHistoryBar(d, imagePath) {
             .style("height", "auto")
             .style("left", pageX - 155 + "px")
             .style("top", pageY + "px");
-        // responsiveVoice.speak(":" + d.donor + ": with total value :" + d.amount + " pounds");
+        responsiveVoice.speak(":" + d.donor + ": with total value :" + d.amount + " pounds");
     };
     imgNode.onmouseout = function () {
         imgNode.style.boxShadow = "";
         histTooltip.style("opacity", "0");
-        // responsiveVoice.cancel();
+        responsiveVoice.cancel();
     };
 
     if (historyBarItemsCounter >= sizeOfHistoryBar) {

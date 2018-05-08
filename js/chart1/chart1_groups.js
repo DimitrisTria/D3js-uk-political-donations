@@ -1,7 +1,8 @@
 
 var padding = 2;
-var force, node, data, maxVal;
+var node;
 var brake = 0.2;
+var radius = d3.scale.sqrt().range([10, 20]);
 
 var currentEvent_dct = {
     "all-donations": moveToCentre,
@@ -13,9 +14,9 @@ var currentEvent_dct = {
 
 function total1() {
     force.gravity(0)
-        .friction(0.9)
+        .friction(0.85)
         .charge(function (d) {
-            return -Math.pow(d.radius, 2) / 2.8;
+            return -Math.pow(d.radius, 2.0) / 2.8;
         })
         .on("tick", all1)
         .start();
@@ -23,11 +24,12 @@ function total1() {
 
 function all1(e) {
     if (currentGroup == group_lst[0]) {
-        node.each(currentEvent_dct[currentGroup](e.alpha)).each(collide(0.0001));
+        node.each(currentEvent_dct[currentGroup](e.alpha)).each(collide(0.001));
     }
     else {
         node.each(currentEvent_dct[currentGroup](e.alpha));
     }
+
     node.attr("cx", function (d) {
         return d.x;
     })
@@ -72,10 +74,9 @@ var allMoneyCentres = {
 };
 
 function moveToCentre(alpha) {
-    var centreY = 0;
-
     return function (d) {
         var centreX = allMoneyCentres.x + 75;
+        var centreY = 0;
 
         if (d.value <= 25001) {
             centreY = allMoneyCentres.y + 75;
@@ -187,10 +188,10 @@ var splitByDonorAmountCentres = {
 };
 
 function moveByAmount(alpha) {
-    var centreX = 0;
-    var centreY = 0;
-
     return function (d) {
+        var centreX = 0;
+        var centreY = 0;
+
         if (d.value >= 0 && d.value <= 100000) {
             centreX = splitByDonorAmountCentres.firstGroup.x;
             centreY = splitByDonorAmountCentres.firstGroup.y;

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700">
 
     <!-- calc data on page load -->
-    <script src="js/libs/d3.v3.min.js"></script>
+    <script src="js/src/d3.v3.min.js"></script>
     <script src="js/chart2/chart2_groups.js"></script>
     <script src="js/stats_charts/stats_charts_groups.js"></script>
     <script src="js/data.js"></script>
@@ -47,7 +47,13 @@
 
     <div id="view-header">
         <h1>Who's funding the big three?</h1>
-        <nav role="navigation" id="view-group-buttons">
+        <div id="view-mode-buttons">
+            <button id="mode_chart1_svg" class="tablink mode" onclick="modeButtonFocus('view_chart1_d3', this, 'rgba(255, 0, 0, 0.3)')">view_1</button>
+            <button id="mode_chart2_svg" class="tablink mode" onclick="modeButtonFocus('view_chart2_d3', this, 'rgba(0, 255, 0, 0.3)')">view_2</button>
+            <button id="mode_stats_charts_svgs" class="tablink mode" onclick="modeButtonFocus('view_stats_charts_d3', this, 'rgba(0, 0, 255, 0.3)')">statistics</button>
+        </div>
+
+        <nav id="view-group-buttons" role="navigation">
             <li class="group-buttons">
                 <a href="#" role="button" id="all-donations" class="pure-button group">All money</a>
             </li>
@@ -246,31 +252,26 @@
         <svg id="stats_chart1_svg"></svg>
     </div>
 
-    <div id="view-mode-buttons">
-        <button id="mode_chart1_svg" class="tablink mode" onclick="modeButtonFocus('view_chart1_d3', this, 'rgba(255, 0, 0, 0.3)')">view1</button>
-        <button id="mode_chart2_svg" class="tablink mode" onclick="modeButtonFocus('view_chart2_d3', this, 'rgba(0, 255, 0, 0.3)')">view2</button>
-        <button id="mode_stats_charts_svgs" class="tablink mode" onclick="modeButtonFocus('view_stats_charts_d3', this, 'rgba(0, 0, 255, 0.3)')">statistics</button>
-    </div>
-
-    <!-- history bar -->
     <div id="view-history-bar"></div>
-    <!--end of: history bar-->
 
     <div id="view-footer">
         <p> My github profile:
             <a href="https://github.com/DimitrisTria/">DimitrisTria</a>
         </p>
-        <p> Project's repository:
+        <p> Repository of current project:
             <a href="https://github.com/DimitrisTria/D3js-uk-political-donations">https://github.com/DimitrisTria/D3js-uk-political-donations</a>
         </p>
-        <p> Original project:
+        <p> Repository of original project:
             <a href="https://github.com/ioniodi/D3js-uk-political-donations">https://github.com/ioniodi/D3js-uk-political-donations</a>
         </p>
     </div>
 
-    <script src="js/libs/jquery.min.js"></script>
-    <script src="js/libs/d3.v3.min.js"></script>
-    <script src='js/libs/responsivevoice.js'></script>
+    <script src="js/src/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
+    </script>
+    <script src="js/src/d3.v3.min.js"></script>
+    <script src='js/src/responsivevoice.js'></script>
 
     <script src="js/main.js"></script>
     <script src="js/main_interacting.js"></script>
