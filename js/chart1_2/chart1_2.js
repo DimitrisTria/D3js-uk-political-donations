@@ -9,8 +9,7 @@ var fill = d3.scale.ordinal().range(["#FF0000", "#00FF00", "#FFFF00", "#0000FF"]
 var group_lst = ["group-all", "group-by-geographic-area", "group-by-region", "group-by-category-of-use"];
 var currentGroup = group_lst[0];   // first group to show on window load
 var previewsGroup = "";
-var groupButtonSound = new Audio();
-groupButtonSound.src = "assets/sounds/groupButtonSound.wav";
+var groupButtonSound = new Audio("assets/audio/groupButtonSound.wav");
 
 $(document).ready(function () {
     d3.selectAll(".group").on("click", function (d) {
@@ -76,8 +75,7 @@ function chart1_2_Display(data) {
             region: d.region,
             radius: radiusScale(d.total),
             x: Math.random() * w,
-            y: -radiusScale(d.total),
-            color: d.color
+            y: -radiusScale(d.total)
         };
 
         nodes.push(node);
@@ -133,7 +131,7 @@ function mouseoverCircle(d) {
         + "<p> Total value: <b>" + comma(d.total) + " kwh</p> </b>";
     d3.select("#info-box")
         .html(infoBox)
-        .style("border", "2px solid " + d.color)
+        .style("border", "2px solid black")
         .style("border-radius", "2px");
     responsiveVoice.speak(":" +d.department_en +": with total value :" +comma(d.total) +" kilowatt hours");
 }
@@ -145,7 +143,7 @@ function mousemoveCircle(d) {
         .style("left", (d3.event.pageX + 20) + "px")
         .style("top", (d3.event.pageY) + "px")
         .html(infoTooltip)
-        .style("border", "2px solid " + d.color)
+        .style("border", "2px solid black")
         .style("border-radius", "2px")
         .style("display", "block");
 }

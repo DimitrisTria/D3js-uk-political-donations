@@ -134,9 +134,10 @@ div#view-by-amount-title {
 }
 div#first-amount-interval, div#second-amount-interval, div#third-amount-interval {
     position: absolute;
+	width: 155px;
     top: 34em;
 }
-div#first-amount-interval { left: 10em; }
-div#second-amount-interval { left: 27em; }
-div#third-amount-interval { left: 47em; }
+div#first-amount-interval { left: 7em; }
+div#second-amount-interval { left: 24em; }
+div#third-amount-interval { left: 44em; }
 /* end of: Split by amount of donation */
