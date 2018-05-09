@@ -44,7 +44,7 @@ function statsChart1Display(eventName) {
             "height": 0,
             "y": height
         })
-        .transition().duration(3000).delay(function (i) { return i * 100; })
+        .transition().duration(2000).delay(function (i) { return i * 100; })
         .attr({
             "x": function (currentStats_lst) { return xScale(currentStats_lst[0]); },
             "y": function (currentStats_lst) { return yScale(currentStats_lst[1]); },
@@ -105,6 +105,6 @@ function statsChart1Display(eventName) {
         .style({
             "text-anchor": "middle"
         })
-        .text("frequency");
+        .text("donators");
 }
 /* ****** end of: stats_chart1_svg ****** */
